@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Левашов](https://up.htmlacademy.ru/ecmascript/2/user/142769).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Дерябин](https://htmlacademy.ru/profile/id212247).
 
 ---
 
