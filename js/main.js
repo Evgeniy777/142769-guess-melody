@@ -7,10 +7,10 @@ for (let i = 0; i < screen.length; i++) {
   screens[i] = screen[i];
 }
 
-function showScreen(screen) {
+function showScreen(screenElement) {
   let screenContainer = document.querySelector(`.app .main`);
   screenContainer.innerHTML = ``;
-  screenContainer.appendChild(screen);
+  screenContainer.appendChild(screenElement);
 }
 
 let startPosition = 4;
