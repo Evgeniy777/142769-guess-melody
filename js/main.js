@@ -1,37 +1,56 @@
 let templates = document.querySelector(`#templates`);
 let templateContent = templates.content;
-let screen = templateContent.querySelectorAll(`.main`);
 let screens = [];
+let screenWelcome = templateContent.querySelector(`.main--welcome`);
+let screenLevelArtist = templateContent.querySelector(`.main--level-artist`);
+let screenLevelGenre = templateContent.querySelector(`.main--level-genre`);
+let screenResultWin = templateContent.querySelector(`.main--result-win`);
+let screenResultFail = templateContent.querySelector(`.main--result-fail`);
 
-for (let i = 0; i < screen.length; i++) {
-  screens[i] = screen[i];
-}
+screens[0] = screenWelcome;
+screens[1] = screenLevelArtist;
+screens[2] = screenLevelGenre;
+screens[3] = screenResultWin;
+screens[4] = screenResultFail;
 
-function showScreen(screenElement) {
+console.log(screens);
+
+let activeScreen = 0;
+
+function showScreen(activeScreen) {
   let screenContainer = document.querySelector(`.app .main`);
   screenContainer.innerHTML = ``;
-  screenContainer.appendChild(screenElement);
+  for (let i = 0; i < screens.length; i++) {
+    if( i == activeScreen) {
+      screens[i].classList.remove(`screen-hidden`);
+      screens[i].classList.add(`screen-active`);
+    } else {
+      screens[i].classList.add(`screen-hidden`);
+      screens[i].classList.remove(`screen-active`);
+    }
+    screenContainer.appendChild(screens[i]);
+  }
 }
 
-let startPosition = 4;
-
-showScreen(screens[startPosition]);
+showScreen(activeScreen);
 
 document.addEventListener(`keydown`, (e) => {
   if (e.altKey && e.keyCode === 37) {
-    if (startPosition > 0) {
-      startPosition--;
+    if (activeScreen > 0) {
+      activeScreen--;
     } else {
-      startPosition = screen.length - 1;
+      activeScreen = screens.length - 1;
     }
+    console.log(activeScreen);
+    showScreen(activeScreen);
   }
   if (e.altKey && e.keyCode === 39) {
-    if (startPosition < screen.length - 1) {
-      startPosition++;
+    if (activeScreen < screens.length - 1) {
+      activeScreen++;
     } else {
-      startPosition = 0;
+      activeScreen = 0;
     }
+    console.log(activeScreen);
+    showScreen(activeScreen);
   }
-  showScreen(screens[startPosition]);
-  return startPosition;
 });
