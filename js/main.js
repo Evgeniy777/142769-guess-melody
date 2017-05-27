@@ -13,15 +13,13 @@ screens[2] = screenLevelGenre;
 screens[3] = screenResultWin;
 screens[4] = screenResultFail;
 
-console.log(screens);
-
 let activeScreen = 0;
 
 function showScreen(activeScreen) {
   let screenContainer = document.querySelector(`.app .main`);
   screenContainer.innerHTML = ``;
   for (let i = 0; i < screens.length; i++) {
-    if( i == activeScreen) {
+    if(i === activeScreen) {
       screens[i].classList.remove(`screen-hidden`);
       screens[i].classList.add(`screen-active`);
     } else {
@@ -41,7 +39,6 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = screens.length - 1;
     }
-    console.log(activeScreen);
     showScreen(activeScreen);
   }
   if (e.altKey && e.keyCode === 39) {
@@ -50,7 +47,6 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = 0;
     }
-    console.log(activeScreen);
     showScreen(activeScreen);
   }
 });
