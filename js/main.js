@@ -15,11 +15,11 @@ screens[4] = screenResultFail;
 
 let activeScreen = 0;
 
-function showScreen(activeScreen) {
+function showScreen(screen) {
   let screenContainer = document.querySelector(`.app .main`);
   screenContainer.innerHTML = ``;
   for (let i = 0; i < screens.length; i++) {
-    if(i === activeScreen) {
+    if (i === screen) {
       screens[i].classList.remove(`screen-hidden`);
       screens[i].classList.add(`screen-active`);
     } else {
