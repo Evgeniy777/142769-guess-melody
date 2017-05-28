@@ -1,36 +1,29 @@
 let templates = document.querySelector(`#templates`);
 let templateContent = templates.content;
 let screens = [];
-let screenWelcome = templateContent.querySelector(`.main--welcome`);
-let screenLevelArtist = templateContent.querySelector(`.main--level-artist`);
-let screenLevelGenre = templateContent.querySelector(`.main--level-genre`);
-let screenResultWin = templateContent.querySelector(`.main--result-win`);
-let screenResultFail = templateContent.querySelector(`.main--result-fail`);
+let screenWelcome = templateContent.querySelectorAll(`.main--welcome`);
+let screenLevel = templateContent.querySelectorAll(`.main--level`);
+let screenResult = templateContent.querySelectorAll(`.main--result`);
 
-screens[0] = screenWelcome;
-screens[1] = screenLevelArtist;
-screens[2] = screenLevelGenre;
-screens[3] = screenResultWin;
-screens[4] = screenResultFail;
+function addingScreenToArray(element) {
+  for (let i = 0; i < element.length; i++)
+    screens.push(element[i]);
+}
+
+addingScreenToArray(screenWelcome);
+addingScreenToArray(screenLevel);
+addingScreenToArray(screenResult);
+console.log(screens);
 
 let activeScreen = 0;
 
-function showScreen(screen) {
+function showScreen(screenElement) {
   let screenContainer = document.querySelector(`.app .main`);
   screenContainer.innerHTML = ``;
-  for (let i = 0; i < screens.length; i++) {
-    if (i === screen) {
-      screens[i].classList.remove(`screen-hidden`);
-      screens[i].classList.add(`screen-active`);
-    } else {
-      screens[i].classList.add(`screen-hidden`);
-      screens[i].classList.remove(`screen-active`);
-    }
-    screenContainer.appendChild(screens[i]);
-  }
+  screenContainer.appendChild(screenElement);
 }
 
-showScreen(activeScreen);
+showScreen(screens[activeScreen]);
 
 document.addEventListener(`keydown`, (e) => {
   if (e.altKey && e.keyCode === 37) {
@@ -39,7 +32,8 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = screens.length - 1;
     }
-    showScreen(activeScreen);
+    console.log(activeScreen);
+    showScreen(screens[activeScreen]);
   }
   if (e.altKey && e.keyCode === 39) {
     if (activeScreen < screens.length - 1) {
@@ -47,6 +41,8 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = 0;
     }
-    showScreen(activeScreen);
+
+    console.log(activeScreen);
+    showScreen(screens[activeScreen]);
   }
 });
