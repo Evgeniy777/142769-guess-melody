@@ -6,21 +6,22 @@ let screenLevel = templateContent.querySelectorAll(`.main--level`);
 let screenResult = templateContent.querySelectorAll(`.main--result`);
 
 function addingScreenToArray(element) {
-  for (let i = 0; i < element.length; i++)
+  for (let i = 0; i < element.length; i++) {
     screens.push(element[i]);
+  }
 }
 
 addingScreenToArray(screenWelcome);
 addingScreenToArray(screenLevel);
 addingScreenToArray(screenResult);
-console.log(screens);
 
 let activeScreen = 0;
 
 function showScreen(screenElement) {
   let screenContainer = document.querySelector(`.app .main`);
+  let element = screenElement;
   screenContainer.innerHTML = ``;
-  screenContainer.appendChild(screenElement);
+  screenContainer.appendChild(element);
 }
 
 showScreen(screens[activeScreen]);
@@ -32,7 +33,6 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = screens.length - 1;
     }
-    console.log(activeScreen);
     showScreen(screens[activeScreen]);
   }
   if (e.altKey && e.keyCode === 39) {
@@ -41,8 +41,6 @@ document.addEventListener(`keydown`, (e) => {
     } else {
       activeScreen = 0;
     }
-
-    console.log(activeScreen);
     showScreen(screens[activeScreen]);
   }
 });
