@@ -19,9 +19,7 @@ let activeScreen = 0;
 
 function showScreen(screenElement) {
   let screenContainer = document.querySelector(`.app .main`);
-  let element = screenElement;
-  screenContainer.innerHTML = ``;
-  screenContainer.appendChild(element);
+  screenContainer.innerHTML = screenElement.outerHTML;
 }
 
 showScreen(screens[activeScreen]);
