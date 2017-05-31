@@ -1,44 +1,22 @@
-let templates = document.querySelector(`#templates`);
-let templateContent = templates.content;
-let screens = [];
-let screenWelcome = templateContent.querySelectorAll(`.main--welcome`);
-let screenLevel = templateContent.querySelectorAll(`.main--level`);
-let screenResult = templateContent.querySelectorAll(`.main--result`);
+import mainWelcome from './module-3';
+import mainLevelArtist from './module-4';
+import mainLevelGenre from './module-1';
+import mainResultWin from './module-2';
+import mainResultFail from './module-5';
+import {showScreen} from './show-screen';
+// import {getElementFromTemplate} from './create-dom-element';
 
-function addingScreenToArray(element) {
-  for (let i = 0; i < element.length; i++) {
-    screens.push(element[i]);
-  }
-}
+showScreen(mainWelcome);
 
-addingScreenToArray(screenWelcome);
-addingScreenToArray(screenLevel);
-addingScreenToArray(screenResult);
+console.log(mainWelcome);
+console.log(mainLevelArtist);
+console.log(mainLevelGenre);
+console.log(mainResultWin);
+console.log(mainResultFail);
 
-let activeScreen = 0;
+let playButton = document.querySelector(`.main-play`);
 
-function showScreen(screenElement) {
-  let screenContainer = document.querySelector(`.app .main`);
-  screenContainer.innerHTML = screenElement.outerHTML;
-}
+playButton.onclick = (evt) => {
+  showScreen(mainLevelArtist);
+};
 
-showScreen(screens[activeScreen]);
-
-document.addEventListener(`keydown`, (e) => {
-  if (e.altKey && e.keyCode === 37) {
-    if (activeScreen > 0) {
-      activeScreen--;
-    } else {
-      activeScreen = screens.length - 1;
-    }
-    showScreen(screens[activeScreen]);
-  }
-  if (e.altKey && e.keyCode === 39) {
-    if (activeScreen < screens.length - 1) {
-      activeScreen++;
-    } else {
-      activeScreen = 0;
-    }
-    showScreen(screens[activeScreen]);
-  }
-});
