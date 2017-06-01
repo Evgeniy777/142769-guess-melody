@@ -40,7 +40,7 @@ const moduleThreeElement = getElementFromTemplate(mainLevelGenre);
 const sendAnswer = moduleThreeElement.querySelector(`.genre-answer-send`);
 sendAnswer.setAttribute(`disabled`, `disabled`);
 
-const genreFrom = moduleThreeElement.querySelector(`genre`);
+const genreFrom = moduleThreeElement.querySelector(`.genre`);
 const answers = genreFrom.querySelectorAll(`input[name="answer"`);
 
 genreFrom.addEventListener((`change`), () => {
