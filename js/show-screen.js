@@ -3,5 +3,6 @@
  */
 export const showScreen = (screenElement) => {
   let screenContainer = document.querySelector(`.app .main`);
-  screenContainer.innerHTML = screenElement.outerHTML;
+  screenContainer.innerHTML = ``;
+  screenContainer.appendChild(screenElement);
 };

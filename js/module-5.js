@@ -2,6 +2,8 @@
  * Created by Cannibal on 31.05.2017.
  */
 import {getElementFromTemplate} from './create-dom-element';
+import {showScreen} from './show-screen';
+import mainWelcome from './module-1';
 
 const mainResultFail = `
   <!-- Неудачный результат игры -->
@@ -14,4 +16,10 @@ const mainResultFail = `
   </section>`;
 
 const moduleFiveElement = getElementFromTemplate(mainResultFail);
+const newGame = moduleFiveElement.querySelector(`.main-replay`);
+
+newGame.onclick = () => {
+  showScreen(mainWelcome);
+};
+
 export default moduleFiveElement;
