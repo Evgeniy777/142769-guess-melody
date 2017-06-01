@@ -1,6 +1,3 @@
-/**
- * Created by Cannibal on 31.05.2017.
- */
 import {getElementFromTemplate} from './create-dom-element';
 import {showScreen} from './show-screen';
 import mainResultWin from './module-4';
@@ -41,12 +38,12 @@ const mainLevelGenre = `
 
 const moduleThreeElement = getElementFromTemplate(mainLevelGenre);
 const sendAnswer = moduleThreeElement.querySelector(`.genre-answer-send`);
-sendAnswer.setAttribute('disabled', 'disabled');
+sendAnswer.setAttribute(`disabled`, `disabled`);
 
-const genreFrom = moduleThreeElement.querySelector('.genre');
-const answers = genreFrom.querySelectorAll('input[name="answer"');
+const genreFrom = moduleThreeElement.querySelector(`genre`);
+const answers = genreFrom.querySelectorAll(`input[name="answer"`);
 
-genreFrom.addEventListener(('change'), () => {
+genreFrom.addEventListener((`change`), () => {
   let selectedAnswersCount = 0;
   for (let i = 0; i < answers.length; i++) {
     const answer = answers[i];
@@ -55,9 +52,9 @@ genreFrom.addEventListener(('change'), () => {
     }
   }
   if (selectedAnswersCount > 0) {
-    sendAnswer.removeAttribute('disabled');
+    sendAnswer.removeAttribute(`disabled`);
   } else {
-    sendAnswer.setAttribute('disabled', 'disabled');
+    sendAnswer.setAttribute(`disabled`, `disabled`);
   }
 });
 
@@ -69,7 +66,3 @@ sendAnswer.onclick = () => {
 };
 
 export default moduleThreeElement;
-
-
-
-

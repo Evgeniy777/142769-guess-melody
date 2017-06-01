@@ -1,6 +1,3 @@
-/**
- * Created by Cannibal on 31.05.2017.
- */
 import {getElementFromTemplate} from './create-dom-element';
 import {showScreen} from './show-screen';
 import mainLevelArtist from './module-2';
@@ -26,6 +23,3 @@ playButton.onclick = () => {
   showScreen(mainLevelArtist);
 };
 export default moduleOneElement;
-
-
-
