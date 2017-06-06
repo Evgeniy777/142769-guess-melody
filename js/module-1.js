@@ -1,11 +1,11 @@
 import {getElementFromTemplate} from './create-dom-element';
 import {showScreen} from './show-screen';
 import mainLevelArtist from './module-2';
+import headLogoTemplate from './header';
 
 const mainWelcome = `
   <!-- Приветствие -->
-  <section class="main main--welcome">
-    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+  <section class="main main--welcome"> ` + headLogoTemplate + `
     <button class="main-play">Начать игру</button>
     <h2 class="title main-title">Правила игры</h2>
     <p class="text main-text">
