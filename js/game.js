@@ -5,53 +5,65 @@ export default {
       text: `Правила просты&nbsp;— за&nbsp;2 минуты дать максимальное количество правильных ответов.<br> Удачи!`
     },
     types: [
-      'guessArtist',
-      'guessSong'
+      `guessArtist`,
+      `guessSong`
     ],
-    questions: [
-      {
-        type: 'guessArtist',
-        text: `Кто исполняет эту песню?`,
-        options: [
-          {
-            artist: `Пелагея`,
-            src: `http://lorempixel.com/400/200`
-          },
-          {
-            artist: `Краснознаменная дивизия имени моей бабушки`,
-            src: `http://lorempixel.com/300/200`
-          },
-          {
-            artist: `Lorde`,
-            src: `http://lorempixel.com/200/200`
-          }
-        ]
-      },
-      {
-        type: 'guessSong',
-        text: `Выберите инди-рок треки`,
-        options: [
-          {value: 1},
-          {value: 2},
-          {value: 3},
-          {value: 4}
-        ]
-      }
-    ],
+    guessArtist: {
+      text: `Кто исполняет эту песню?`,
+      srcData: `someFileHere`,
+      options: [
+        {
+          id: 1,
+          text: `Пелагея`,
+          srcImg: `http://lorempixel.com/400/200`
+        },
+        {
+          id: 2,
+          text: `Краснознаменная дивизия имени моей бабушки`,
+          srcImg: `http://lorempixel.com/300/200`
+        },
+        {
+          id: 3,
+          text: `Lorde`,
+          srcImg: `http://lorempixel.com/200/200`
+        }
+      ]
+    },
+    guessSong: {
+      text: `Выберите инди-рок треки`,
+      options: [
+        {
+          id: 1,
+          dataUrl: `http://lorempixel.com/400/200`
+        },
+        {
+          id: 2,
+          dataUrl: `http://lorempixel.com/300/200`
+        },
+        {
+          id: 3,
+          dataUrl: `http://lorempixel.com/200/200`
+        },
+        {
+          id: 4,
+          dataUrl: `http://lorempixel.com/100/200`
+        }
+      ]
+    },
     result: {
       type: {
         win: `Вы настоящий меломан!`,
         fail: `Вы проиграли`
       },
       time: 2,
-      melodies: 4,
+      scores: 4,
       ratio: 80
     }
   },
   question: [
-    'type',
-    'text',
-    'options'
+    `type`,
+    `text`,
+    `options`
   ],
   answer: {
     type: {
@@ -59,13 +71,13 @@ export default {
       wrong: false
     },
     content: [
-      'text',
-      'src'
+      `text`,
+      `src`
     ]
   },
   timer: {
-    min: `02`,
-    sec: `00`
+    min: 2,
+    sec: 0
   }
 };
 
