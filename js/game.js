@@ -8,48 +8,6 @@ export default {
       `guessArtist`,
       `guessSong`
     ],
-    guessArtist: {
-      text: `Кто исполняет эту песню?`,
-      srcData: `someFileHere`,
-      options: [
-        {
-          id: 1,
-          text: `Пелагея`,
-          srcImg: `http://lorempixel.com/400/200`
-        },
-        {
-          id: 2,
-          text: `Краснознаменная дивизия имени моей бабушки`,
-          srcImg: `http://lorempixel.com/300/200`
-        },
-        {
-          id: 3,
-          text: `Lorde`,
-          srcImg: `http://lorempixel.com/200/200`
-        }
-      ]
-    },
-    guessSong: {
-      text: `Выберите инди-рок треки`,
-      options: [
-        {
-          id: 1,
-          dataUrl: `http://lorempixel.com/400/200`
-        },
-        {
-          id: 2,
-          dataUrl: `http://lorempixel.com/300/200`
-        },
-        {
-          id: 3,
-          dataUrl: `http://lorempixel.com/200/200`
-        },
-        {
-          id: 4,
-          dataUrl: `http://lorempixel.com/100/200`
-        }
-      ]
-    },
     result: {
       type: {
         win: `Вы настоящий меломан!`,
