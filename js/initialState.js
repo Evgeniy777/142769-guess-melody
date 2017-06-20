@@ -1,4 +1,4 @@
-const initialState  = Object.assign({},{
+const initialState = Object.assign({}, {
   level: 0,
   lives: 3,
   score: 0

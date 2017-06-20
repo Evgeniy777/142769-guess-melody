@@ -2,7 +2,7 @@ export default [
   {
     type: `guessSong`,
     text: `Выберите инди-рок треки`,
-    genre: 'indy',
+    genre: `indy`,
     options: [
       {
         id: 1,
@@ -29,7 +29,7 @@ export default [
   {
     type: `guessSong`,
     text: `Выберите рок треки`,
-    genre: 'rock',
+    genre: `rock`,
     options: [
       {
         id: 1,
@@ -56,7 +56,7 @@ export default [
   {
     type: `guessSong`,
     text: `Выберите метал треки`,
-    genre: 'metal',
+    genre: `metal`,
     options: [
       {
         id: 1,
@@ -83,7 +83,7 @@ export default [
   {
     type: `guessSong`,
     text: `Выберите панк треки`,
-    genre: 'punk',
+    genre: `punk`,
     options: [
       {
         id: 1,
@@ -110,7 +110,7 @@ export default [
   {
     type: `guessSong`,
     text: `Выберите сладж треки`,
-    genre: 'sludge',
+    genre: `sludge`,
     options: [
       {
         id: 1,
