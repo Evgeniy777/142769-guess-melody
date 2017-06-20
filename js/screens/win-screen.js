@@ -1,7 +1,7 @@
-import {getElementFromTemplate} from './create-dom-element';
-import {showScreen} from './show-screen';
-import mainWelcome from './module-1';
-import headLogoTemplate from './header';
+import {getElementFromTemplate} from './engine/create-dom-element';
+import {showScreen} from './engine/show-screen';
+import mainWelcome from './screens/welcome-screen';
+import headLogoTemplate from './data/header';
 
 export default (data) => {
 

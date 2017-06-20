@@ -1,7 +1,7 @@
-import {getElementFromTemplate} from './create-dom-element';
-import {showScreen} from './show-screen';
-import mainLevelArtist from './module-2';
-import headLogoTemplate from './header';
+import {getElementFromTemplate} from './engine/create-dom-element';
+import {showScreen} from './engine/show-screen';
+import mainLevelArtist from './screens/artist-screen';
+import {headLogoTemplate} from './data/header';
 
 export default (data) => {
 
