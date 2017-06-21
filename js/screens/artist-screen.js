@@ -1,6 +1,7 @@
 import {getElementFromTemplate} from '../engine/create-dom-element';
 import {showScreen} from '../engine/show-screen';
 import mainLevelGenre from '../screens/genre-screen';
+import {initialState} from '../data/initialState';
 
 export default (data) => {
 
@@ -48,6 +49,5 @@ export default (data) => {
       showScreen(mainLevelGenre(data));
     };
   });
-
   return moduleTwoElement;
 };

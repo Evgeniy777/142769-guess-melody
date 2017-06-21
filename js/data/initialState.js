@@ -1,7 +1,5 @@
-const initialState = Object.assign({}, {
-  level: 0,
+export const initialState = Object.freeze({
+  remainingTime: 120,
   lives: 3,
-  score: 0
+  scores: 0
 });
-
-export const setInitialState = () => initialState;

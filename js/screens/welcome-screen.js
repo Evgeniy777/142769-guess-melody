@@ -25,5 +25,3 @@ export default (data) => {
 
   return moduleOneElement;
 };
-
-console.log(showScreen);
