@@ -1,6 +1,6 @@
-import {getElementFromTemplate} from './engine/create-dom-element';
-import {showScreen} from './engine/show-screen';
-import mainLevelGenre from './screens/genre-screen';
+import {getElementFromTemplate} from '../engine/create-dom-element';
+import {showScreen} from '../engine/show-screen';
+import mainLevelGenre from '../screens/genre-screen';
 
 export default (data) => {
 

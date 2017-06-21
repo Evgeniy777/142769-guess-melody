@@ -1,14 +1,15 @@
-import {getElementFromTemplate} from './engine/create-dom-element';
-import {showScreen} from './engine/show-screen';
-import mainLevelArtist from './screens/artist-screen';
-import {headLogoTemplate} from './data/header';
+import {getElementFromTemplate} from '../engine/create-dom-element';
+import {showScreen} from '../engine/show-screen';
+import mainLevelArtist from '../screens/artist-screen';
 
 export default (data) => {
 
   const mainWelcome = `
   <!-- Приветствие -->
   <section class="main main--welcome">
-    ${headLogoTemplate}
+    <section class="logo" title="Угадай мелодию">
+      <h1>Угадай мелодию</h1>
+    </section>
     <button class="main-play">Начать игру</button>
     <h2 class="title main-title">${data.game.rules.title}</h2>
     <p class="text main-text">${data.game.rules.text}</p>
@@ -24,3 +25,5 @@ export default (data) => {
 
   return moduleOneElement;
 };
+
+console.log(showScreen);

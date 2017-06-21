@@ -1,15 +1,16 @@
-import {getElementFromTemplate} from './engine/create-dom-element';
-import {showScreen} from './engine/show-screen';
-import mainWelcome from './screens/welcome-screen';
-import headLogoTemplate from './data/header';
+import {getElementFromTemplate} from '../engine/create-dom-element';
+import {showScreen} from '../engine/show-screen';
+import mainWelcome from '../screens/welcome-screen';
 
 export default (data) => {
 
   const mainResultWin = `
   <!-- Результат игры -->
   <section class="main main--result">
-    ${headLogoTemplate}
-    
+    <section class="logo" title="Угадай мелодию">
+          <h1>Угадай мелодию</h1>
+        </section>
+
     <h2 class="title">${data.game.result.type.win}</h2>
     <div class="main-stat">За&nbsp;${data.game.result.time}&nbsp;минуты<br>вы&nbsp;отгадали ${data.game.result.scores}&nbsp;мелодии</div>
     <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${data.game.result.ratio}%&nbsp;игроков</span>

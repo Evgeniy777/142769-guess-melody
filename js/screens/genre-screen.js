@@ -1,7 +1,7 @@
-import {getElementFromTemplate} from './engine/create-dom-element';
-import {showScreen} from './engine/show-screen';
-import mainResultWin from './screens/win-screen';
-import mainResultFail from './screens/fail-screen';
+import {getElementFromTemplate} from '../engine/create-dom-element';
+import {showScreen} from '../engine/show-screen';
+import mainResultWin from '../screens/win-screen';
+import mainResultFail from '../screens/fail-screen';
 
 export default (data) => {
   const mainLevelGenre = `
