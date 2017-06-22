@@ -2,6 +2,9 @@ import {getElementFromTemplate} from '../engine/create-dom-element';
 import {showScreen} from '../engine/show-screen';
 import mainResultWin from '../screens/win-screen';
 import mainResultFail from '../screens/fail-screen';
+import {checkGenres} from '../data/initialState';
+import {initialState} from '../data/initialState';
+import {guessGenreQuestions} from '../data/guessGenreQuestions';
 
 export default (data) => {
   const mainLevelGenre = `
@@ -13,7 +16,7 @@ export default (data) => {
         let opt = option.splice(1, 1)[0];
         return `<div class="genre-answer">
         <div class="player-wrapper"></div>
-        <input type="checkbox" name="answer" value="answer-1" id="a-${opt.id}">
+        <input type="checkbox" name="answer" value="answer-${opt.id}" id="a-${opt.id}">
         <label class="genre-answer-check" for="a-${opt.id}"></label>
       </div>`;
       }).join(``)}
@@ -26,10 +29,10 @@ export default (data) => {
   const sendAnswer = moduleThreeElement.querySelector(`.genre-answer-send`);
   sendAnswer.setAttribute(`disabled`, `disabled`);
 
-  const genreFrom = moduleThreeElement.querySelector(`.genre`);
-  const answers = genreFrom.querySelectorAll(`input[name="answer"`);
+  const genreForm = moduleThreeElement.querySelector(`.genre`);
+  const answers = genreForm.querySelectorAll(`input[name="answer"`);
 
-  genreFrom.addEventListener((`change`), () => {
+  genreForm.addEventListener((`change`), () => {
     let selectedAnswersCount = 0;
     for (let i = 0; i < answers.length; i++) {
       const answer = answers[i];
@@ -42,6 +45,8 @@ export default (data) => {
     } else {
       sendAnswer.setAttribute(`disabled`, `disabled`);
     }
+
+    checkGenres(guessGenreQuestions);
   });
 
   sendAnswer.onclick = () => {

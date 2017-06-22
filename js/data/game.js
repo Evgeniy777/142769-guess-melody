@@ -6,7 +6,7 @@ export default {
     },
     types: [
       `guessArtist`,
-      `guessSong`
+      `guessGenre`
     ],
     guessArtist: {
       text: `Кто исполняет эту песню?`,
@@ -66,14 +66,8 @@ export default {
     `options`
   ],
   answer: {
-    type: {
-      correct: true,
-      wrong: false
-    },
-    content: [
-      `text`,
-      `src`
-    ]
+    correct: true,
+    wrong: false
   },
   timer: {
     min: 2,
