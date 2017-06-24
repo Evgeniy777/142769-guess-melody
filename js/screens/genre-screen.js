@@ -2,17 +2,16 @@ import {getElementFromTemplate} from '../engine/create-dom-element';
 import {showScreen} from '../engine/show-screen';
 import mainResultWin from '../screens/win-screen';
 import mainResultFail from '../screens/fail-screen';
-import {checkGenres} from '../data/initialState';
-import {initialState} from '../data/initialState';
-import {guessGenreQuestions} from '../data/guessGenreQuestions';
+import {checkGenres} from '../engine/checkGenres';
+// import {guessGenre} from '../data/guessGenre';
 
-export default (data) => {
+export default (question) => {
   const mainLevelGenre = `
   <!-- Игра на выбор жанра -->
   <section class="main main--level main--level-genre">
-    <h2 class="title">${data.game.guessSong.text}</h2>
+    <h2 class="title">${question.text}</h2>
     <form class="genre">
-      ${[...data.game.guessSong.options.entries()].map((option) => {
+      ${[...question.options.entries()].map((option) => {
         let opt = option.splice(1, 1)[0];
         return `<div class="genre-answer">
         <div class="player-wrapper"></div>
@@ -27,34 +26,20 @@ export default (data) => {
 
   const moduleThreeElement = getElementFromTemplate(mainLevelGenre);
   const sendAnswer = moduleThreeElement.querySelector(`.genre-answer-send`);
-  sendAnswer.setAttribute(`disabled`, `disabled`);
+  // sendAnswer.setAttribute(`disabled`, `disabled`);
 
   const genreForm = moduleThreeElement.querySelector(`.genre`);
-  const answers = genreForm.querySelectorAll(`input[name="answer"`);
-
   genreForm.addEventListener((`change`), () => {
-    let selectedAnswersCount = 0;
-    for (let i = 0; i < answers.length; i++) {
-      const answer = answers[i];
-      if (answer.checked) {
-        selectedAnswersCount++;
-      }
-    }
-    if (selectedAnswersCount > 0) {
-      sendAnswer.removeAttribute(`disabled`);
-    } else {
-      sendAnswer.setAttribute(`disabled`, `disabled`);
-    }
-
-    checkGenres(guessGenreQuestions);
+    let result =  checkGenres(question);
+    sendAnswer.onclick = () => {
+      debugger;
+      alert(result);
+      // const resultScreens = [mainResultWin(data), mainResultFail(data)];
+      // const getRandomResult = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
+      // const randomResult = (result = getRandomResult()) => showScreen(result);
+      // randomResult();
+    };
   });
-
-  sendAnswer.onclick = () => {
-    const resultScreens = [mainResultWin(data), mainResultFail(data)];
-    const getRandomResult = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
-    const randomResult = (result = getRandomResult()) => showScreen(result);
-    randomResult();
-  };
 
   return moduleThreeElement;
 };

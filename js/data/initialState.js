@@ -40,23 +40,3 @@ export const setNextQuestion = (questions, questionIndex) =>{
     return questions.slice(questionIndex, 1);
   }
 };
-
-export const checkGenres = (question) => {
-  const correctGenre = question.genre;
-  const options = question.options;
-  const correctOptions = [];
-  options.find((option) => {
-    if(option.genre == correctGenre) {
-      correctOptions.push(option.id);
-    }
-  });
-  correctOptions.find((optionId) => {
-    const inputs = document.querySelectorAll(`.genre-answer #a-${optionId}`);
-    inputs.find((input) => {
-      if (input.checked) {
-        return true;
-      }
-    });
-  });
-  
-};
