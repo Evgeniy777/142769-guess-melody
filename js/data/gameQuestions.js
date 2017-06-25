@@ -1,5 +1,27 @@
 export const gameQuestions = [
   {
+    type: `guessArtist`,
+    srcData: `media/9th_Symphony_Finale_by_Beethoven.mp3`,
+    options: [
+      {
+        id: 1,
+        correct: true,
+        text: `Пелагея`,
+        srcImg: `http://lorempixel.com/400/200`
+      },
+      {
+        id: 2,
+        text: `Краснознаменная дивизия имени моей бабушки`,
+        srcImg: `http://lorempixel.com/300/200`
+      },
+      {
+        id: 3,
+        text: `Lorde`,
+        srcImg: `http://lorempixel.com/200/200`
+      }
+    ]
+  },
+  {
     type: `guessGenre`,
     text: `Выберите рок треки`,
     genre: `rock`,
@@ -28,30 +50,6 @@ export const gameQuestions = [
   },
   {
     type: `guessArtist`,
-    artist: `Пелагея`,
-    srcData: `media/9th_Symphony_Finale_by_Beethoven.mp3`,
-    options: [
-      {
-        id: 1,
-        correct: true,
-        text: `Пелагея`,
-        srcImg: `http://lorempixel.com/400/200`
-      },
-      {
-        id: 2,
-        text: `Краснознаменная дивизия имени моей бабушки`,
-        srcImg: `http://lorempixel.com/300/200`
-      },
-      {
-        id: 3,
-        text: `Lorde`,
-        srcImg: `http://lorempixel.com/200/200`
-      }
-    ]
-  },
-  {
-    type: `guessArtist`,
-    artist: `Lorde`,
     srcData: `media/Blue_Danube_by_Strauss.mp3`,
     options: [
       {
@@ -74,7 +72,6 @@ export const gameQuestions = [
   },
   {
     type: `guessArtist`,
-    artist: `Краснознаменная дивизия имени моей бабушки`,
     srcData: `media/Bright_is_the_Ring_of_Words.mp3`,
     options: [
       {
@@ -97,7 +94,6 @@ export const gameQuestions = [
   },
   {
     type: `guessArtist`,
-    artist: `Пелагея`,
     srcData: `media/Horses_to_Water.mp3`,
     options: [
       {
@@ -120,7 +116,6 @@ export const gameQuestions = [
   },
   {
     type: `guessArtist`,
-    artist: `Lorde`,
     srcData: `media/The_Thunderer.mp3`,
     options: [
       {

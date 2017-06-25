@@ -31,15 +31,15 @@ export default (question) => {
   const genreForm = moduleThreeElement.querySelector(`.genre`);
   genreForm.addEventListener((`change`), () => {
     let result =  checkGenres(question);
-    sendAnswer.onclick = () => {
-      debugger;
-      alert(result);
-      // const resultScreens = [mainResultWin(data), mainResultFail(data)];
-      // const getRandomResult = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
-      // const randomResult = (result = getRandomResult()) => showScreen(result);
-      // randomResult();
-    };
   });
+
+  sendAnswer.onclick = () => {
+    alert(result);
+    // const resultScreens = [mainResultWin(data), mainResultFail(data)];
+    // const getRandomResult = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
+    // const randomResult = (result = getRandomResult()) => showScreen(result);
+    // randomResult();
+  };
 
   return moduleThreeElement;
 };

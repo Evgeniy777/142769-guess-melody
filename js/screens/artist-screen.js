@@ -1,8 +1,13 @@
 import {getElementFromTemplate} from '../engine/create-dom-element';
-import {showScreen} from '../engine/show-screen';
+import {checkArtist} from '../engine/checkArtist';
+import {setQuestionToAsk} from '../engine/setQuestionToAsk';
+import {setGameScreen} from '../engine/setGameScreen';
+import {checkGameResult} from '../engine/checkGameResult';
+import {gameQuestions} from '../data/gameQuestions';
 import {initialState} from '../data/initialState';
+import {showScreen} from '../engine/show-screen';
 
-export default (game) => {
+export default (question, game) => {
 
   const mainLevel = `
   <!-- Выбор исполнителя: уровень -->
@@ -26,26 +31,37 @@ export default (game) => {
       <h2 class="title main-title">${game.levels.guessArtist.question}</h2>
       <div class="player-wrapper"></div>
       <form class="main-list">
-      ${[...game.guessArtist.options.entries()].map((option) => {
-    let opt = option.splice(1, 1)[0];
-    return `<div class="main-answer-wrapper">
-                <input class="main-answer-r" type="radio" id="answer-${opt.id}" name="answer" value="val-${opt.id}" />
-                <label class="main-answer" for="answer-${opt.id}">
-                  <img class="main-answer-preview" src="${opt.srcImg}">
-                  ${opt.text}
-                </label>
-              </div>`;
-  }).join(``)}
+        ${[...question.options.entries()].map((option) => {
+          let opt = option.splice(1, 1)[0];
+          return `<div class="main-answer-wrapper">
+            <input class="main-answer-r" type="radio" id="answer-${opt.id}" name="answer" value="val-${opt.id}" />
+            <label class="main-answer" for="answer-${opt.id}">
+              <img class="main-answer-preview" src="${opt.srcImg}">
+              ${opt.text}
+            </label>
+          </div>`;
+        }).join(``)}
       </form>
     </div>
   </section>`;
 
   const moduleTwoElement = getElementFromTemplate(mainLevel);
-  const answers = moduleTwoElement.querySelectorAll(`.main-answer`);
+  const answers = moduleTwoElement.querySelectorAll(`.main-list [name="answer"]`);
 
   Array.from(answers).forEach((answer) => {
     answer.onclick = () => {
-      showScreen(mainLevelGenre(game));
+      const gameResult = checkArtist(question, answer);
+      const gameState = checkGameResult(gameResult, initialState);
+      const nextQuestion = setQuestionToAsk(gameQuestions, gameState.questionIndex);
+      const nextGameScreen = setGameScreen(nextQuestion);
+      // showScreen(mainLevelGenre(game));
+
+
+      console.log(gameResult);
+      console.log(gameState);
+      console.log(nextQuestion);
+      console.log(nextGameScreen);
+      showScreen(nextGameScreen);
     };
   });
   return moduleTwoElement;
