@@ -1,8 +1,10 @@
 export const initialState = Object.freeze({
   remainingTime: 120,
   lives: 3,
+  answers: 0,
   scores: 0,
-  questionIndex: 0
+  questionIndex: 0,
+  ratio: 0
 });
 
 export const setRemainingTime = (gameState, value) => {

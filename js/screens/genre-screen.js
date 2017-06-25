@@ -1,14 +1,18 @@
 import {getElementFromTemplate} from '../engine/create-dom-element';
-import {showScreen} from '../engine/show-screen';
-import mainResultWin from '../screens/win-screen';
-import mainResultFail from '../screens/fail-screen';
+import {checkGameResult} from '../engine/checkGameResult';
+import {setNextLevel} from '../engine/setNextLevel';
 import {checkGenres} from '../engine/checkGenres';
-// import {guessGenre} from '../data/guessGenre';
 
-export default (question) => {
+export default (question, state, game) => {
+  const startTime = new Date();
   const mainLevelGenre = `
   <!-- Игра на выбор жанра -->
   <section class="main main--level main--level-genre">
+    <div class="timer-value" xmlns="http://www.w3.org/1999/xhtml">
+      <span class="timer-value-mins">${game.timer.min}</span><!--
+      --><span class="timer-value-dots">:</span><!--
+      --><span class="timer-value-secs">${game.timer.sec}</span>
+    </div>
     <h2 class="title">${question.text}</h2>
     <form class="genre">
       ${[...question.options.entries()].map((option) => {
@@ -26,19 +30,14 @@ export default (question) => {
 
   const moduleThreeElement = getElementFromTemplate(mainLevelGenre);
   const sendAnswer = moduleThreeElement.querySelector(`.genre-answer-send`);
-  // sendAnswer.setAttribute(`disabled`, `disabled`);
 
-  const genreForm = moduleThreeElement.querySelector(`.genre`);
-  genreForm.addEventListener((`change`), () => {
-    let result =  checkGenres(question);
-  });
+  const inputs = moduleThreeElement.querySelectorAll(`.genre-answer [name="answer"]`);
 
   sendAnswer.onclick = () => {
-    alert(result);
-    // const resultScreens = [mainResultWin(data), mainResultFail(data)];
-    // const getRandomResult = () => resultScreens[Math.floor(Math.random() * resultScreens.length)];
-    // const randomResult = (result = getRandomResult()) => showScreen(result);
-    // randomResult();
+    const gameResult = checkGenres(inputs, question);
+    const gameState = checkGameResult(gameResult, state, startTime);
+
+    setNextLevel(gameState, gameResult);
   };
 
   return moduleThreeElement;

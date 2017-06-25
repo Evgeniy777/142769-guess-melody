@@ -1,8 +1,11 @@
 import {getElementFromTemplate} from '../engine/create-dom-element';
 import {showScreen} from '../engine/show-screen';
-import mainWelcome from '../screens/welcome-screen';
+import {setQuestionToAsk} from '../engine/setQuestionToAsk';
+import {setGameScreen} from '../engine/setGameScreen';
+import {gameQuestions} from '../data/gameQuestions';
+import {initialState} from '../data/initialState';
 
-export default (data) => {
+export default (state, game) => {
 
   const mainResultFail = `
   <!-- Неудачный результат игры -->
@@ -11,7 +14,7 @@ export default (data) => {
       <h1>Угадай мелодию</h1>
     </section>
 
-    <h2 class="title">${data.game.result.type.fail}</h2>
+    <h2 class="title">${game.result.fail}</h2>
     <div class="main-stat">Ничего, вам повезет в следующий раз</div>
     <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
   </section>`;
@@ -20,7 +23,9 @@ export default (data) => {
   const newGame = moduleFiveElement.querySelector(`.main-replay`);
 
   newGame.onclick = () => {
-    showScreen(mainWelcome(data));
+    const newState = Object.assign({}, initialState);
+    const questionToAsk = setQuestionToAsk(gameQuestions, newState.questionIndex);
+    showScreen(setGameScreen(questionToAsk, newState));
   };
 
   return moduleFiveElement;

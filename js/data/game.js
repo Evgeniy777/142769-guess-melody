@@ -1,19 +1,11 @@
 export default {
   rules: {
     title: `Правила игры`,
-      text: `Правила просты&nbsp;— за&nbsp;2 минуты дать максимальное количество правильных ответов.<br> Удачи!`
+    text: `Правила просты&nbsp;— за&nbsp;2 минуты дать максимальное количество правильных ответов.<br> Удачи!`
   },
   types: {
     guessArtist: `guessArtist`,
     guessGenre: `guessGenre`
-  },
-  levels: {
-    guessArtist: {
-      question: `Кто исполняет это песню?`
-    },
-    guessGenre: {
-      question: `Выберите все песни в жанре`
-    }
   },
   result: {
     win: `Вы настоящий меломан!`,

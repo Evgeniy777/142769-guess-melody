@@ -25,8 +25,7 @@ export default (game) => {
   playButton.onclick = () => {
     const state = Object.assign({}, initialState);
     const questionToAsk = setQuestionToAsk(gameQuestions, state.questionIndex);
-    console.log(questionToAsk);
-    showScreen(setGameScreen(questionToAsk));
+    showScreen(setGameScreen(questionToAsk, state));
   };
 
   return moduleOneElement;

@@ -1,14 +1,10 @@
 import {getElementFromTemplate} from '../engine/create-dom-element';
-import {checkArtist} from '../engine/checkArtist';
-import {setQuestionToAsk} from '../engine/setQuestionToAsk';
-import {setGameScreen} from '../engine/setGameScreen';
 import {checkGameResult} from '../engine/checkGameResult';
-import {gameQuestions} from '../data/gameQuestions';
-import {initialState} from '../data/initialState';
-import {showScreen} from '../engine/show-screen';
+import {setNextLevel} from '../engine/setNextLevel';
+import {checkArtist} from '../engine/checkArtist';
 
-export default (question, game) => {
-
+export default (question, state, game) => {
+  const startTime = new Date();
   const mainLevel = `
   <!-- Выбор исполнителя: уровень -->
   <section class="main main--level main--level-artist">
@@ -28,7 +24,7 @@ export default (question, game) => {
     <div class="main-wrap">
       <div class="main-timer"></div>
 
-      <h2 class="title main-title">${game.levels.guessArtist.question}</h2>
+      <h2 class="title main-title">Кто исполняет это песню?</h2>
       <div class="player-wrapper"></div>
       <form class="main-list">
         ${[...question.options.entries()].map((option) => {
@@ -47,22 +43,14 @@ export default (question, game) => {
 
   const moduleTwoElement = getElementFromTemplate(mainLevel);
   const answers = moduleTwoElement.querySelectorAll(`.main-list [name="answer"]`);
-
   Array.from(answers).forEach((answer) => {
     answer.onclick = () => {
       const gameResult = checkArtist(question, answer);
-      const gameState = checkGameResult(gameResult, initialState);
-      const nextQuestion = setQuestionToAsk(gameQuestions, gameState.questionIndex);
-      const nextGameScreen = setGameScreen(nextQuestion);
-      // showScreen(mainLevelGenre(game));
+      const gameState = checkGameResult(gameResult, state, startTime);
 
-
-      console.log(gameResult);
-      console.log(gameState);
-      console.log(nextQuestion);
-      console.log(nextGameScreen);
-      showScreen(nextGameScreen);
+      setNextLevel(gameState, gameResult);
     };
   });
+
   return moduleTwoElement;
 };
