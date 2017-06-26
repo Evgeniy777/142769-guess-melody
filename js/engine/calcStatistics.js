@@ -11,5 +11,7 @@ export const calcStatistics = (state, statistics) => {
   const sortedStatistics = compareStatistics(statistics);
   const index = sortedStatistics.findIndex((statItem) => statItem === newStatisticItem);
 
-  newState.ratio = (1 - (index + 1) / sortedStatistics.length) * 100;
+  newState.ratio = ((1 - (index + 1) / sortedStatistics.length) * 100).toFixed(0);
+
+  return newState.ratio;
 };

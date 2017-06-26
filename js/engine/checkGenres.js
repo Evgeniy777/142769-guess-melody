@@ -22,6 +22,5 @@ export const checkGenres = (inputs, question) => {
     }
   });
 
-  const gameResult = (correctOptions.join(``) === checkedAnswers.join(``));
-  return gameResult;
+  return (correctOptions.join(``) === checkedAnswers.join(``));
 };
