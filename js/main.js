@@ -1,7 +1,3 @@
-import {showScreen} from './engine/show-screen';
-import game from './data/game';
-import mainWelcome from './screens/welcome-screen';
+import {startNewGame} from './engine/tools';
 
-showScreen(mainWelcome(game));
-
-
+startNewGame();
