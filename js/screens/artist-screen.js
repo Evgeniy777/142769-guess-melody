@@ -43,9 +43,12 @@ export default (question, state, game) => {
 
   const moduleTwoElement = getElementFromTemplate(mainLevel);
   const answers = moduleTwoElement.querySelectorAll(`.main-list [name="answer"]`);
+
+
   Array.from(answers).forEach((answer) => {
-    answer.onclick = () => {
-      const gameResult = checkArtist(question, answer);
+    answer.onclick = (e) => {
+      const answerIndex = Array.from(answers).indexOf(e.target) + 1;
+      const gameResult = checkArtist(question, answerIndex);
       const gameState = checkGameResult(gameResult, state, startTime);
 
       setNextLevel(gameState, gameResult);

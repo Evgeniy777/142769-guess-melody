@@ -1,10 +1,9 @@
 import game from '../data/game';
 
-export const checkGenres = (inputs, question) => {
+export const checkGenres = (answers, question) => {
   const correctGenre = question.genre;
   const options = question.options;
   const correctOptions = [];
-  const checkedAnswers = [];
 
   options.find((option) => {
     if (option.genre === correctGenre) {
@@ -14,13 +13,5 @@ export const checkGenres = (inputs, question) => {
     }
   });
 
-  inputs.forEach((input) => {
-    if (input.checked) {
-      checkedAnswers.push(game.answer.correct);
-    } else {
-      checkedAnswers.push(game.answer.wrong);
-    }
-  });
-
-  return (correctOptions.join(``) === checkedAnswers.join(``));
+  return (correctOptions.join(``) === answers.join(``));
 };

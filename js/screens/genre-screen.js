@@ -34,7 +34,15 @@ export default (question, state, game) => {
   const inputs = moduleThreeElement.querySelectorAll(`.genre-answer [name="answer"]`);
 
   sendAnswer.onclick = () => {
-    const gameResult = checkGenres(inputs, question);
+    const checkedAnswers = [];
+    inputs.forEach((input) => {
+      if (input.checked) {
+        checkedAnswers.push(game.answer.correct);
+      } else {
+        checkedAnswers.push(game.answer.wrong);
+      }
+    });
+    const gameResult = checkGenres(checkedAnswers, question);
     const gameState = checkGameResult(gameResult, state, startTime);
 
     setNextLevel(gameState, gameResult);
