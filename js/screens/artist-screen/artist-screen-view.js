@@ -1,10 +1,14 @@
 import AbstractView from '../../view.js';
-import {getElementFromTemplate} from '../../engine/create-dom-element';
-import {checkGameResult} from '../../engine/checkGameResult';
-import {setNextLevel} from '../../engine/setNextLevel';
-import {checkArtist} from '../../engine/checkArtist';
+import {gameQuestions} from '../../data/gameQuestions';
+import game from '../../data/game';
 
 export default class LevelArtist extends AbstractView {
+  constructor(state) {
+    super();
+    this.state = state;
+    this.question = gameQuestions[this.state.questionIndex];
+  }
+
   get template() {
     return `<!-- Выбор исполнителя: уровень -->
     <section class="main main--level main--level-artist">
@@ -27,7 +31,7 @@ export default class LevelArtist extends AbstractView {
         <h2 class="title main-title">Кто исполняет это песню?</h2>
         <div class="player-wrapper"></div>
         <form class="main-list">
-          ${[...question.options.entries()].map((option) => {
+          ${[...this.question.options.entries()].map((option) => {
         let opt = option.splice(1, 1)[0];
         return `<div class="main-answer-wrapper">
               <input class="main-answer-r" type="radio" id="answer-${opt.id}" name="answer" value="val-${opt.id}" />
@@ -43,16 +47,11 @@ export default class LevelArtist extends AbstractView {
   }
 
   bind() {
-    const moduleTwoElement = getElementFromTemplate(mainLevel);
-    const answers = moduleTwoElement.querySelectorAll(`.main-list [name="answer"]`);
+    const answers = this.element.querySelectorAll(`.main-list [name="answer"]`);
 
     Array.from(answers).forEach((answer) => {
       answer.onclick = (e) => {
-        const answerIndex = Array.from(answers).indexOf(e.target) + 1;
-        const gameResult = checkArtist(question, answerIndex);
-        const gameState = checkGameResult(gameResult, state, startTime);
-
-        setNextLevel(gameState, gameResult);
+        this.onClick(e, this.state, this.question, answers);
       };
     });
 

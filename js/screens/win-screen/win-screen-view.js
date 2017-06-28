@@ -3,7 +3,6 @@ import AbstractView from '../../view';
 export default class ResultWin extends AbstractView {
   constructor(state) {
     super();
-
     this.state = state;
   }
 
@@ -21,7 +20,7 @@ export default class ResultWin extends AbstractView {
   }
 
   bind() {
-    const newGame = document.querySelector(`.main-replay`);
+    const newGame = this.element.querySelector(`.main-replay`);
 
     newGame.addEventListener(`click`, () => {
       this.onClick();

@@ -1,6 +1,15 @@
-import AbstractView from '../../view';
+import AbstractView from '../../view.js';
+import {gameQuestions} from '../../data/gameQuestions';
+import game from '../../data/game';
 
 export default class LevelGenre extends AbstractView {
+  constructor(state) {
+    super();
+
+    this.state = state;
+    this.question = gameQuestions[this.state.questionIndex];
+  }
+
   get template() {
     return `<!-- Игра на выбор жанра -->
     <section class="main main--level main--level-genre">
@@ -9,9 +18,9 @@ export default class LevelGenre extends AbstractView {
         --><span class="timer-value-dots">:</span><!--
         --><span class="timer-value-secs">${game.timer.sec}</span>
       </div>
-      <h2 class="title">${question.text}</h2>
+      <h2 class="title">${this.question.text}</h2>
       <form class="genre">
-        ${[...question.options.entries()].map((option) => {
+        ${[...this.question.options.entries()].map((option) => {
         let opt = option.splice(1, 1)[0];
         return `<div class="genre-answer">
           <div class="player-wrapper"></div>
@@ -26,8 +35,8 @@ export default class LevelGenre extends AbstractView {
   }
 
   bind() {
-    const sendAnswer = document.querySelector(`.genre-answer-send`);
-    const inputs = document.querySelectorAll(`.genre-answer [name="answer"]`);
+    const sendAnswer = this.element.querySelector(`.genre-answer-send`);
+    const inputs = this.element.querySelectorAll(`.genre-answer [name="answer"]`);
 
     sendAnswer.onclick = () => {
       const checkedAnswers = [];
@@ -38,10 +47,7 @@ export default class LevelGenre extends AbstractView {
           checkedAnswers.push(game.answer.wrong);
         }
       });
-      const gameResult = checkGenres(checkedAnswers, question);
-      const gameState = checkGameResult(gameResult, state, startTime);
-
-      setNextLevel(gameState, gameResult);
+      this.onClick(checkedAnswers, this.state, this.question);
     };
   }
 }
