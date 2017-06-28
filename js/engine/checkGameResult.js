@@ -1,4 +1,4 @@
-import {setScores} from '../engine/setScores';
+// import {setScores} from '../engine/setScores';
 import {calcStatistics} from '../engine/calcStatistics';
 import {statistics} from '../data/statistics';
 

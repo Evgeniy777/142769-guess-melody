@@ -7,7 +7,6 @@ export default () => {
 
   welcome.onClick = () => {
     const state = Object.assign({}, initialState);
-    console.log(state);
     showGameScreen(state);
   };
 

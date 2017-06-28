@@ -14,9 +14,9 @@ export const showGameScreen = (gameState) => {
   if (lives > 0) {
     if (questionIndex <= gameQuestions.length - 1) {
       const questionType = questionToAsk.type;
-      if (questionType == game.types.guessArtist) {
+      if (questionType === game.types.guessArtist) {
         startGuessArtistGame(state);
-      } else if (questionType == game.types.guessGenre) {
+      } else if (questionType === game.types.guessGenre) {
         startGuessGenreGame(state);
       }
     } else {

@@ -1,25 +1,25 @@
-import LevelArtist from '../screens/artist-screen/artist-screen';
-import LevelGenre from '../screens/genre-screen/genre-screen';
-import ResultWin from '../screens/win-screen/win-screen';
-import ResultFail from '../screens/fail-screen/fail-screen';
-import Welcome from '../screens/welcome-screen/welcome-screen';
+import levelArtist from '../screens/artist-screen/artist-screen';
+import levelGenre from '../screens/genre-screen/genre-screen';
+import resultWin from '../screens/win-screen/win-screen';
+import resultFail from '../screens/fail-screen/fail-screen';
+import welcome from '../screens/welcome-screen/welcome-screen';
 
 export const setGameScreen = (gameScreen, state) => {
   switch (gameScreen) {
     case `artist`: {
-      return LevelArtist(state);
+      return levelArtist(state);
     }
     case `genre`: {
-      return LevelGenre(state);
+      return levelGenre(state);
     }
     case `win`: {
-      return ResultWin(state);
+      return resultWin(state);
     }
     case `fail`: {
-      return ResultFail;
+      return resultFail;
     }
     case `welcome`: {
-      return Welcome;
+      return welcome;
     }
     default: {
       throw new Error(`Ошибка`);

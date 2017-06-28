@@ -32,15 +32,15 @@ export default class LevelArtist extends AbstractView {
         <div class="player-wrapper"></div>
         <form class="main-list">
           ${[...this.question.options.entries()].map((option) => {
-        let opt = option.splice(1, 1)[0];
-        return `<div class="main-answer-wrapper">
+            let opt = option.splice(1, 1)[0];
+            return `<div class="main-answer-wrapper">
               <input class="main-answer-r" type="radio" id="answer-${opt.id}" name="answer" value="val-${opt.id}" />
               <label class="main-answer" for="answer-${opt.id}">
                 <img class="main-answer-preview" src="${opt.srcImg}">
                 ${opt.text}
               </label>
             </div>`;
-      }).join(``)}
+          }).join(``)}
         </form>
       </div>
     </section>`;
