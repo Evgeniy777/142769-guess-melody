@@ -13,11 +13,7 @@ export default class LevelGenre extends AbstractView {
   get template() {
     return `<!-- Игра на выбор жанра -->
     <section class="main main--level main--level-genre">
-      <div class="timer-value" xmlns="http://www.w3.org/1999/xhtml">
-        <span class="timer-value-mins">${game.timer.min}</span><!--
-        --><span class="timer-value-dots">:</span><!--
-        --><span class="timer-value-secs">${game.timer.sec}</span>
-      </div>
+      <div class="main-timer"></div>
       <h2 class="title">${this.question.text}</h2>
       <form class="genre">
         ${[...this.question.options.entries()].map((option) => {
