@@ -6,9 +6,9 @@ import {showGameScreen} from '../../engine/showGameScreen';
 export default (state) => {
   const levelGenre = new LevelGenre(state);
 
-  levelGenre.onClick = (checkedAnswers, state, question) => {
-    const gameResult = checkGenres(checkedAnswers, question);
-    const gameState = checkGameResult(gameResult, state);
+  levelGenre.onClick = (obj, checkedAnswers) => {
+    const gameResult = checkGenres(checkedAnswers, obj.question);
+    const gameState = checkGameResult(gameResult, obj.state);
     showGameScreen(gameState);
   };
 

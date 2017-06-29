@@ -3,7 +3,7 @@ import {showScreen} from '../engine/show-screen';
 
 export const startNewGame = () => {
   const welcome = setGameScreen(`welcome`);
-  showScreen(welcome());
+  showScreen(welcome);
 };
 
 export const startGuessArtistGame = (state) => {

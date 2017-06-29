@@ -19,9 +19,11 @@ export const showGameScreen = (gameState) => {
       } else if (questionType === game.types.guessGenre) {
         startGuessGenreGame(state);
       }
-    } else {
+    } else if (state.answers > 0) {
       endGameWin(state);
     }
+  } else if (state.answers > 0) {
+    endGameWin(state);
   } else {
     endGameFail();
   }

@@ -4,7 +4,7 @@ import {startNewGame} from '../../engine/tools';
 export default (state) => {
   const resultLose = new ResultLose(state);
 
-  resultLose.onClick = startNewGame();
+  resultLose.onClick = () => startNewGame();
 
   return resultLose;
 };

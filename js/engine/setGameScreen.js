@@ -16,10 +16,10 @@ export const setGameScreen = (gameScreen, state) => {
       return resultWin(state);
     }
     case `fail`: {
-      return resultFail;
+      return resultFail(state);
     }
     case `welcome`: {
-      return welcome;
+      return welcome(state);
     }
     default: {
       throw new Error(`Ошибка`);
