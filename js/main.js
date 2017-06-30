@@ -1,5 +1,7 @@
-import mainWelcome from './module-1';
-import {showScreen} from './show-screen';
-import data from './game';
+import {showScreen} from './engine/show-screen';
+import game from './data/game';
+import mainWelcome from './screens/welcome-screen';
 
-showScreen(mainWelcome(data));
+showScreen(mainWelcome(game));
+
+
