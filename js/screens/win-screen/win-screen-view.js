@@ -13,7 +13,7 @@ export default class ResultWin extends AbstractView {
         <h1>Угадай мелодию</h1>
       </section>  
       <h2 class="title">Вы настоящий меломан!</h2>
-      <div class="main-stat">За&nbsp;${this.state.remainingTime}&nbsp;минуты<br>вы&nbsp;отгадали ${this.state.answers}&nbsp;мелодии</div>
+      <div class="main-stat">За&nbsp;${this.state.time}&nbsp;минуты<br>вы&nbsp;отгадали ${this.state.answers}&nbsp;мелодии</div>
       <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${this.state.ratio}%&nbsp;игроков</span>
       <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
     </section>`;

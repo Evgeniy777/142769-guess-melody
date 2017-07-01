@@ -12,9 +12,6 @@ export default (state, question) => {
     const gameState = checkGameResult(gameResult, state);
     showGameScreen(gameState);
     setTimer(gameState);
-
-    console.log(state);
-    console.log(obj.state);
   };
 
   return levelArtist;
