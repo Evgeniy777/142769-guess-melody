@@ -5,24 +5,24 @@ import resultFail from '../screens/fail-screen/fail-screen';
 import welcome from '../screens/welcome-screen/welcome-screen';
 
 export const setGameScreen = (gameScreen, state) => {
-  switch (gameScreen) {
-    case `artist`: {
-      return levelArtist(state);
-    }
-    case `genre`: {
-      return levelGenre(state);
-    }
-    case `win`: {
-      return resultWin(state);
-    }
-    case `fail`: {
-      return resultFail(state);
-    }
-    case `welcome`: {
-      return welcome(state);
-    }
-    default: {
-      throw new Error(`Ошибка`);
-    }
-  }
+  // switch (gameScreen) {
+  //   case `artist`: {
+  //     return levelArtist(state);
+  //   }
+  //   case `genre`: {
+  //     return levelGenre(state);
+  //   }
+  //   case `win`: {
+  //     return resultWin(state);
+  //   }
+  //   case `fail`: {
+  //     return resultFail(state);
+  //   }
+  //   case `welcome`: {
+  //     return welcome(state);
+  //   }
+  //   default: {
+  //     throw new Error(`Ошибка`);
+  //   }
+  // }
 };

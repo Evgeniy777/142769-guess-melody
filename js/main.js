@@ -1,3 +1,3 @@
-import {startNewGame} from './engine/tools';
+import Application from './application';
 
-startNewGame();
+Application.showWelcome();

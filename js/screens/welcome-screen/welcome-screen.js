@@ -1,18 +1,24 @@
 import Welcome from './welcome-screen-view';
+import Application from '../../application';
 import {initialState} from '../../data/initialState';
-import {showGameScreen} from '../../engine/showGameScreen';
-import {setTimer} from '../../engine/setTimer';
-import {getTime} from '../../engine/getTime';
 
-export default () => {
-  const welcome = new Welcome();
+class WelcomeController {
+  constructor(state) {
+    this.state = state;
+    this.screen = new Welcome(this.state);
+  }
 
-  welcome.onClick = () => {
-    const state = Object.assign({}, initialState);
-    showGameScreen(state);
-    setTimer(state);
-    getTime();
-  };
+  init() {
+    this.showScreen();
+    this.screen.onStartGame = Application.showGame;
+  }
 
-  return welcome;
-};
+  showScreen() {
+    const app = document.querySelector(`.app`);
+    app.replaceChild(this.screen.element, app.querySelector(`.main`));
+  }
+}
+
+const welcomeController = new WelcomeController(initialState);
+
+export default welcomeController;
