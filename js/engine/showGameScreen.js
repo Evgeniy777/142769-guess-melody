@@ -12,8 +12,6 @@ export const showGameScreen = (gameState) => {
   const lives = state.lives;
   const remainingTime = state.remainingTime;
 
-  console.log(`state`, state);
-
   if (lives > 0 && remainingTime > 0) {
     if (questionIndex <= gameQuestions.length - 1) {
       const questionType = questionToAsk.type;

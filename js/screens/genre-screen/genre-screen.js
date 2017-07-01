@@ -10,8 +10,8 @@ export default (state) => {
   levelGenre.onClick = (obj, checkedAnswers) => {
     const gameResult = checkGenres(checkedAnswers, obj.question);
     const gameState = checkGameResult(gameResult, obj.state);
-    setTimer(gameState);
     showGameScreen(gameState);
+    setTimer(gameState);
   };
 
   return levelGenre;
