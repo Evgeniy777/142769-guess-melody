@@ -1,7 +1,8 @@
 import Welcome from './welcome-screen-view';
 import {initialState} from '../../data/initialState';
 import {showGameScreen} from '../../engine/showGameScreen';
-import timer from '../../screens/timer/timer';
+import {setTimer} from '../../engine/setTimer';
+import {getTime} from '../../engine/getTime';
 
 export default () => {
   const welcome = new Welcome();
@@ -9,8 +10,8 @@ export default () => {
   welcome.onClick = () => {
     const state = Object.assign({}, initialState);
     showGameScreen(state);
-    const timerContainer = document.querySelector(`.main-timer`);
-    timer(state, timerContainer);
+    setTimer(state);
+    getTime();
   };
 
   return welcome;

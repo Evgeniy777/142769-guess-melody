@@ -6,6 +6,7 @@ export default class Timer extends AbstractView {
     super();
 
     this.time = state.remainingTime;
+    this.state = state;
   }
 
   get template() {
@@ -35,7 +36,7 @@ export default class Timer extends AbstractView {
       this.updateTime(animation);
     }, () => {
       timer.classList.add(`timer-value--finished`);
-      this.finishGame();
+      this.finishGame(this);
     });
   }
 

@@ -10,8 +10,11 @@ export const showGameScreen = (gameState) => {
   const questionIndex = state.questionIndex;
   const questionToAsk = gameQuestions[questionIndex];
   const lives = state.lives;
+  const remainingTime = state.remainingTime;
 
-  if (lives > 0) {
+  console.log(`state`, state);
+
+  if (lives > 0 && remainingTime > 0) {
     if (questionIndex <= gameQuestions.length - 1) {
       const questionType = questionToAsk.type;
       if (questionType === game.types.guessArtist) {

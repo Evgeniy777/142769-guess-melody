@@ -2,11 +2,18 @@ import Timer from './timer-view';
 import {showGameScreen} from '../../engine/showGameScreen';
 
 export default (state, container) => {
-  const timer = new Timer(state);
-  container.appendChild(timer.element);
 
-  timer.finishGame = () => {
-    showGameScreen(state);
+  const timer = new Timer(state);
+  if (container) {
+    container.appendChild(timer.element);
+  }
+
+  timer.finishGame = (obj) => {
+    const newState = Object.assign({}, obj.state);
+    newState.remainingTime = obj.time;
+    console.log(state);
+    console.log(obj.state);
+    showGameScreen(newState);
   };
 
   return timer;
