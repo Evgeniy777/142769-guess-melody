@@ -1,30 +1,28 @@
-// Функция принимает на вход объект вопроса
-// Вызывает функцию с шаблоном нужного типа игры для отрисовки
+import levelArtist from '../screens/artist-screen/artist-screen';
+import levelGenre from '../screens/genre-screen/genre-screen';
+import resultWin from '../screens/win-screen/win-screen';
+import resultFail from '../screens/fail-screen/fail-screen';
+import welcome from '../screens/welcome-screen/welcome-screen';
 
-import mainLevelArtist from '../screens/artist-screen';
-import mainLevelGenre from '../screens/genre-screen';
-import mainResultWin from '../screens/win-screen';
-import mainResultFail from '../screens/fail-screen';
-import game from '../data/game';
-
-export const setGameScreen = (question, state) => {
-  const newState = Object.assign({}, state);
-  let screen;
-  if (newState.lives > 0) {
-    if (question) {
-      const gameType = question.type;
-      if (gameType === game.types.guessArtist) {
-        screen = mainLevelArtist(question, newState, game);
-      } else if (gameType === game.types.guessGenre) {
-        screen = mainLevelGenre(question, newState, game);
-      }
-    } else if (newState.answers > 0) {
-      screen = mainResultWin(newState, game);
-    } else {
-      screen = mainResultFail(newState, game);
+export const setGameScreen = (gameScreen, state) => {
+  switch (gameScreen) {
+    case `artist`: {
+      return levelArtist(state);
     }
-  } else {
-    screen = mainResultFail(newState, game);
+    case `genre`: {
+      return levelGenre(state);
+    }
+    case `win`: {
+      return resultWin(state);
+    }
+    case `fail`: {
+      return resultFail(state);
+    }
+    case `welcome`: {
+      return welcome(state);
+    }
+    default: {
+      throw new Error(`Ошибка`);
+    }
   }
-  return screen;
 };
