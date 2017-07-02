@@ -2,6 +2,7 @@ import Results from './results-view';
 import Application from '../../application';
 import {statistics} from '../../data/statistics';
 import {calcStatistics} from '../../engine/calcStatistics';
+import {showScreen} from '../../engine/show-screen';
 
 export default class ResultsScreen {
   constructor(state) {
@@ -16,8 +17,7 @@ export default class ResultsScreen {
   }
 
   showScreen() {
-    const app = document.querySelector(`.app`);
-    app.replaceChild(this.screen.element, app.querySelector(`.main`));
+    showScreen(this.screen);
   }
 
   calcStatistics() {

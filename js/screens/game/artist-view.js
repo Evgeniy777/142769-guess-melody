@@ -1,6 +1,5 @@
 import AbstractView from '../../view.js';
 import {gameQuestions} from '../../data/gameQuestions';
-import {checkArtist} from '../../engine/checkArtist';
 
 export default class LevelArtist extends AbstractView {
   constructor(state) {

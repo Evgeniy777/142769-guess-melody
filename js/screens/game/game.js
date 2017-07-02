@@ -44,11 +44,13 @@ export class GameController {
 
   checkAnswer(questionType, answer) {
     const question = this.setQuestion();
+    let checkedResult = false;
     if (questionType === game.types.guessArtist) {
-      return checkArtist(question, answer);
+      checkedResult = checkArtist(question, answer);
     } else if (questionType === game.types.guessGenre) {
-      return checkGenres(question, answer);
+      checkedResult = checkGenres(question, answer);
     }
+    return checkedResult;
   }
 
   showGameScreen() {

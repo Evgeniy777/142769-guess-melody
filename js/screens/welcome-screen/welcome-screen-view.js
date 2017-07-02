@@ -25,7 +25,5 @@ export default class Welcome extends AbstractView {
     });
   }
 
-  onStartGame() {
-    
-  }
+  onStartGame() {}
 }
