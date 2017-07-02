@@ -34,7 +34,6 @@ class Application {
   }
 
   showWelcome(state) {
-    console.log(`showWelcome`);
     location.hash = ControllerID.WELCOME;
   }
 
