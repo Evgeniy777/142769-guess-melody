@@ -1,18 +1,28 @@
 import Welcome from './welcome-screen-view';
-import {initialState} from '../../data/initialState';
-import {showGameScreen} from '../../engine/showGameScreen';
-import {setTimer} from '../../engine/setTimer';
-import {getTime} from '../../engine/getTime';
+import application from '../../application';
+import {showScreen} from '../../engine/show-screen';
 
-export default () => {
-  const welcome = new Welcome();
+export default class WelcomeController {
+  constructor(state) {
+    this.state = state;
+    this.screen = new Welcome(this.state);
+  }
 
-  welcome.onClick = () => {
-    const state = Object.assign({}, initialState);
-    showGameScreen(state);
-    setTimer(state);
-    getTime();
-  };
+  init() {
+    this.showScreen();
+    this.screen.onStartGame = application.showGame;
 
-  return welcome;
-};
+    console.log(`initWelcome`);
+    application.showWelcome();
+    showScreen(this.screen.element);
+
+    this.screen.onStartGame = () => {
+      application.showGame();
+    };
+  }
+
+  showScreen() {
+    showScreen(this.screen.element);
+  }
+}
+

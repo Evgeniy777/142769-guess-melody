@@ -76,7 +76,7 @@ gulp.task('copy', ['copy-html', 'scripts', 'style'], function () {
   return gulp.src([
     'fonts/**/*.{woff,woff2}',
     'img/*.*',
-    'audio/*.*'
+    'media/*.*'
   ], {base: '.'})
     .pipe(gulp.dest('build'));
 });

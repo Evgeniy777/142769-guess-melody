@@ -1,9 +1,6 @@
-import {getTime} from './../engine/getTime';
-
-export const setScores = (state) => {
+export const setScores = (state, time) => {
   const newState = Object.assign({}, state);
-  const responseTime = state.remainingTime - getTime();
-  if (responseTime < 10) {
+  if (time < 10) {
     newState.scores += 2;
   } else {
     newState.scores++;

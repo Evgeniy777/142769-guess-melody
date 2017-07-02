@@ -1,6 +1,11 @@
 import AbstractView from '../../view';
+import {initialState} from '../../data/initialState';
 
 export default class Welcome extends AbstractView {
+  constructor(state) {
+    super();
+    this.state = initialState;
+  }
 
   get template() {
     return `<!-- Приветствие -->
@@ -17,7 +22,9 @@ export default class Welcome extends AbstractView {
   bind() {
     const playButton = this.element.querySelector(`.main-play`);
     playButton.addEventListener(`click`, () => {
-      this.onClick();
+      this.onStartGame();
     });
   }
+
+  onStartGame() {}
 }

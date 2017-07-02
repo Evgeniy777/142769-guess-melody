@@ -1,6 +1,6 @@
-const screenContainer = document.querySelector(`.app .main`);
+const screenContainer = document.querySelector(`.app`);
 
-export const showScreen = (screenElement) => {
+export const showScreen = (fragment) => {
   screenContainer.innerHTML = ``;
-  screenContainer.appendChild(screenElement.element);
+  screenContainer.appendChild(fragment);
 };

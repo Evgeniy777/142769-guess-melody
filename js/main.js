@@ -1,3 +1,3 @@
-import {startNewGame} from './engine/tools';
+import application from './application';
 
-startNewGame();
+application.init();

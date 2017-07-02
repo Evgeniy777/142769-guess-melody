@@ -4,9 +4,8 @@ import {animationObject} from '../../animate';
 export default class Timer extends AbstractView {
   constructor(state) {
     super();
-
-    this.time = state.remainingTime;
     this.state = state;
+    this.time = state.remainingTime;
   }
 
   get template() {
@@ -91,5 +90,16 @@ export default class Timer extends AbstractView {
       this.initializeCountdown();
     }
     return this._element;
+  }
+
+  getTime() {
+    const minutes = parseInt(this.element.querySelector(`.timer-value-mins`).textContent, 10);
+    const seconds = parseInt(this.element.querySelector(`.timer-value-secs`).textContent, 10);
+
+    return {minutes, seconds};
+  }
+
+  finishGame() {
+
   }
 }
