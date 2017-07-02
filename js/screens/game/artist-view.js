@@ -12,6 +12,7 @@ export default class LevelArtist extends AbstractView {
   get template() {
     return `<!-- Выбор исполнителя: уровень -->
     <section class="main main--level main--level-artist">
+      <div class="main-timer"></div>
       <div class="main-wrap">  
         <h2 class="title main-title">Кто исполняет это песню?</h2>
         <div class="player-wrapper"></div>
@@ -28,7 +29,6 @@ export default class LevelArtist extends AbstractView {
           }).join(``)}
         </form>
       </div>
-      <div class="main-timer"></div>
     </section>`;
   }
 

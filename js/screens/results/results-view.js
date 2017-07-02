@@ -6,9 +6,8 @@ export default class Results extends AbstractView {
     this.state = state;
     this.result = state.result;
   }
-
+  
   get template() {
-    debugger;
     const content = {
       win: {
         title: `Вы настоящий меломан!`,

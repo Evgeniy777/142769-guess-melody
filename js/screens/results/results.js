@@ -1,5 +1,5 @@
 import Results from './results-view';
-import Application from '../../application';
+import application from '../../application';
 import {statistics} from '../../data/statistics';
 import {calcStatistics} from '../../engine/calcStatistics';
 import {showScreen} from '../../engine/show-screen';
@@ -11,16 +11,22 @@ export default class ResultsScreen {
   }
 
   init() {
+    // this.showScreen();
+    // this.screen.onStartNewGame = Application.showWelcome;
     this.calcStatistics();
-    this.showScreen();
-    this.screen.onStartNewGame = Application.showWelcome;
+    showScreen(this.screen.element);
+
+    this.screen.onStartNewGame = () => {
+      application.showWelcome();
+    };
   }
 
   showScreen() {
-    showScreen(this.screen);
+    showScreen(this.screen.element);
   }
 
   calcStatistics() {
-    this.state.ratio = calcStatistics(this.state, statistics);
+    const state = Object.assign({}, this.state);
+    state.ratio = calcStatistics(state, statistics);
   }
 }

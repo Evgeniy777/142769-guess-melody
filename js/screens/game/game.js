@@ -1,6 +1,5 @@
-import {initialState} from '../../data/initialState';
 import Timer from '../../screens/game/timer-view';
-import Application from '../../application';
+import application from '../../application';
 import game from '../../data/game';
 import {checkGameResult} from '../../engine/checkGameResult';
 import {checkArtist} from '../../engine/checkArtist';
@@ -10,19 +9,21 @@ import LevelGenre from './genre-view';
 import {gameQuestions} from '../../data/gameQuestions';
 import {showScreen} from '../../engine/show-screen';
 
-export class GameController {
+export default class GameController {
   constructor(state) {
     this.initialState = state;
     this.state = state;
-    this.timer = new Timer(this.initialState);
+    this.timer = new Timer(this.state);
     this.gameScreen = null;
   }
 
   init() {
+    this.timer = new Timer(this.state);
     this.initQuestion();
-    // this.showTimer();
-    this.timer.finishGame = () => Application.showStats(this.state);
-    console.log(this.timer);
+    this.showTimer();
+    this.timer.finishGame = () => {
+      this.checkResult();
+    };
   }
 
   showTimer() {
@@ -30,8 +31,18 @@ export class GameController {
     timerContainer.appendChild(this.timer.element);
   }
 
+  checkResult() {
+    const state = Object.assign({}, this.state);
+    if (state.answers > 0) {
+      state.result = `win`;
+    } else {
+      state.result = `fail`;
+    }
+    application.showResult(state);
+  }
+
   showQuestion() {
-    showScreen(this.gameScreen);
+    showScreen(this.gameScreen.element);
   }
 
   initQuestion() {
@@ -61,20 +72,10 @@ export class GameController {
       if (this.state.questionIndex <= gameQuestions.length - 1) {
         this.initQuestion();
       } else {
-        if (this.state.answers > 0) {
-          this.state.result = `win`;
-        } else {
-          this.state.result = `fail`;
-        }
-        Application.showStats(this.state);
+        this.checkResult();
       }
     } else {
-      if (this.state.answers > 0) {
-        this.state.result = `win`;
-      } else {
-        this.state.result = `fail`;
-      }
-      Application.showStats(this.state);
+      this.checkResult();
     }
   }
 
@@ -95,7 +96,3 @@ export class GameController {
     return this.gameScreen;
   }
 }
-
-const gameController = new GameController(Object.assign({}, initialState));
-
-export default gameController;
