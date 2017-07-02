@@ -1,6 +1,6 @@
 import welcomeController from './screens/welcome-screen/welcome-screen';
 import game from './screens/game/game';
-// import statsScreen from './screen/stats-screen';
+import ResultsScreen from './screens/results/results';
 
 export default class Application {
 
@@ -13,7 +13,8 @@ export default class Application {
   }
 
   static showStats(state) {
-    // statsScreen.init();
+    const resultsScreen = new ResultsScreen(state);
+    resultsScreen.init();
   }
 
 }

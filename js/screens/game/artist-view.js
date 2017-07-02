@@ -1,5 +1,6 @@
 import AbstractView from '../../view.js';
 import {gameQuestions} from '../../data/gameQuestions';
+import {checkArtist} from '../../engine/checkArtist';
 
 export default class LevelArtist extends AbstractView {
   constructor(state) {
@@ -37,9 +38,12 @@ export default class LevelArtist extends AbstractView {
     Array.from(answers).forEach((answer) => {
       answer.onclick = (e) => {
         const answerIndex = Array.from(answers).indexOf(e.target) + 1;
-        const obj = this;
-        this.onClick(obj, answerIndex);
+        this.onAnswer(this.question.type, answerIndex);
       };
     });
+  }
+
+  onAnswer() {
+
   }
 }

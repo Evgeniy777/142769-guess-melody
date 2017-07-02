@@ -5,5 +5,6 @@ export const initialState = Object.freeze({
   answers: 0,
   scores: 0,
   questionIndex: 0,
-  ratio: 0
+  ratio: 0,
+  result: ``
 });

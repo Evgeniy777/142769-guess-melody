@@ -22,12 +22,10 @@ export default class Welcome extends AbstractView {
     const playButton = this.element.querySelector(`.main-play`);
     playButton.addEventListener(`click`, () => {
       this.onStartGame();
-      console.log(this);
     });
   }
 
   onStartGame() {
-    debugger;
-    alert(this);
+    
   }
 }

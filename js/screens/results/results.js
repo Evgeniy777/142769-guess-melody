@@ -1,9 +1,9 @@
 import Results from './results-view';
 import Application from '../../application';
 import {statistics} from '../../data/statistics';
-import {compareStatistics} from '../../engine/compareStatistics';
+import {calcStatistics} from '../../engine/calcStatistics';
 
-export default class ResultsScreenController {
+export default class ResultsScreen {
   constructor(state) {
     this.state = state;
     this.screen = new Results(this.state);
@@ -21,15 +21,6 @@ export default class ResultsScreenController {
   }
 
   calcStatistics() {
-    const newStatisticItem = {
-      time: this.state.time,
-      answers: this.state.answers
-    };
-    statistics.push(newStatisticItem);
-
-    const sortedStatistics = compareStatistics(statistics);
-    const index = sortedStatistics.findIndex((statItem) => statItem === newStatisticItem);
-
-    this.state.ratio = ((1 - (index + 1) / sortedStatistics.length) * 100).toFixed(0);
+    this.state.ratio = calcStatistics(this.state, statistics);
   }
 }

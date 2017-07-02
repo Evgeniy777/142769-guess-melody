@@ -1,6 +1,7 @@
 import Welcome from './welcome-screen-view';
 import Application from '../../application';
 import {initialState} from '../../data/initialState';
+import {showScreen} from '../../engine/show-screen';
 
 class WelcomeController {
   constructor(state) {
@@ -14,8 +15,7 @@ class WelcomeController {
   }
 
   showScreen() {
-    const app = document.querySelector(`.app`);
-    app.replaceChild(this.screen.element, app.querySelector(`.main`));
+    showScreen(this.screen);
   }
 }
 

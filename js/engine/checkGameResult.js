@@ -1,23 +1,20 @@
 import {setScores} from '../engine/setScores';
-import {calcStatistics} from '../engine/calcStatistics';
-import {statistics} from '../data/statistics';
-import {setRemainingTime} from '../engine/setRemainingTime';
-import {initialState} from './../data/initialState';
+import {formatTimeObjToSecs} from '../engine/formatTimeObjToSecs';
 
-export const checkGameResult = (gameResult, gameState) => {
+
+export const checkGameResult = (gameResult, gameState, startTime, responseTime) => {
   const state = Object.assign({}, gameState);
+  const time = formatTimeObjToSecs(startTime) - formatTimeObjToSecs(responseTime);
 
   if (gameResult) {
-    state.scores = setScores(state);
+    state.scores = setScores(state, time);
     state.answers++;
   } else {
     state.lives--;
   }
 
   state.questionIndex++;
-  state.remainingTime = setRemainingTime(state);
-  state.ratio = calcStatistics(state, statistics);
-  state.time = initialState.remainingTime - state.remainingTime;
+  state.time += time;
 
   return state;
 };

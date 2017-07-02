@@ -41,8 +41,11 @@ export default class LevelGenre extends AbstractView {
           checkedAnswers.push(game.answer.wrong);
         }
       });
-      const obj = this;
-      this.onClick(obj, checkedAnswers);
+      this.onAnswer(this.question.type, checkedAnswers);
     };
+  }
+
+  onAnswer() {
+
   }
 }

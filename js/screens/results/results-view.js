@@ -4,6 +4,7 @@ export default class Results extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
+    this.result = state.result;
   }
 
   get template() {

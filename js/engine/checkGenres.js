@@ -1,15 +1,13 @@
-import game from '../data/game';
-
-export const checkGenres = (answers, question) => {
+export const checkGenres = (question, answers) => {
   const correctGenre = question.genre;
   const options = question.options;
   const correctOptions = [];
 
   options.find((option) => {
     if (option.genre === correctGenre) {
-      correctOptions.push(game.answer.correct);
+      correctOptions.push(true);
     } else {
-      correctOptions.push(game.answer.wrong);
+      correctOptions.push(false);
     }
   });
 
