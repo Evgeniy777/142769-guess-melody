@@ -10,7 +10,7 @@ class WelcomeController {
   }
 
   init() {
-    console.log(`WelcomeControllerInit`, this.screen.element);
+    console.log(this.screen.element);
     this.showScreen();
     this.screen.onStartGame = Application.showGame;
   }

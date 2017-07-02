@@ -1,6 +1,7 @@
 import AbstractView from '../../view.js';
 import {gameQuestions} from '../../data/gameQuestions';
 import game from '../../data/game';
+import initializePlayer from '../../player';
 
 export default class LevelGenre extends AbstractView {
   constructor(state) {
@@ -31,6 +32,9 @@ export default class LevelGenre extends AbstractView {
   bind() {
     const sendAnswer = this.element.querySelector(`.genre-answer-send`);
     const inputs = this.element.querySelectorAll(`.genre-answer [name="answer"]`);
+    const players = this.element.querySelectorAll(`.player-wrapper`);
+
+    [...players].forEach((player, index) => initializePlayer(player, this.question.options[index].dataUrl));
 
     sendAnswer.onclick = () => {
       const checkedAnswers = [];

@@ -6,22 +6,22 @@ export const gameQuestions = [
     options: [
       {
         id: 1,
-        dataUrl: `music/9th_Symphony_Finale_by_Beethoven.mp3`,
+        dataUrl: `media/9th_Symphony_Finale_by_Beethoven.mp3`,
         genre: `rock`
       },
       {
         id: 2,
-        dataUrl: `music/Fur_Elise_by_Beethoven.mp3`,
+        dataUrl: `media/Fur_Elise_by_Beethoven.mp3`,
         genre: `indy`
       },
       {
         id: 3,
-        dataUrl: `music/Moonlight_Sonata_by_Beethoven.mp3`,
+        dataUrl: `media/Moonlight_Sonata_by_Beethoven.mp3`,
         genre: `metal`
       },
       {
         id: 4,
-        dataUrl: `music/Symphony_No_5_by_Beethoven.mp3`,
+        dataUrl: `media/Symphony_No_5_by_Beethoven.mp3`,
         genre: `rock`
       }
     ]

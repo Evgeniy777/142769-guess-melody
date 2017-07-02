@@ -102,12 +102,4 @@ export default class Timer extends AbstractView {
   finishGame() {
 
   }
-
-  changeState() {
-
-  }
-
-  stopTimer() {
-
-  }
 }

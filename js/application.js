@@ -5,7 +5,6 @@ import ResultsScreen from './screens/results/results';
 export default class Application {
 
   static showWelcome() {
-    debugger;
     welcomeController.init();
   }
 

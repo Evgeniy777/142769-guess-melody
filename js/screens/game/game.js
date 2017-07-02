@@ -20,6 +20,9 @@ export class GameController {
 
   init() {
     this.initQuestion();
+    // this.showTimer();
+    this.timer.finishGame = () => Application.showStats(this.state);
+    console.log(this.timer);
   }
 
   showTimer() {

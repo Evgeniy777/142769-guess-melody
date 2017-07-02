@@ -1,5 +1,6 @@
 import AbstractView from '../../view.js';
 import {gameQuestions} from '../../data/gameQuestions';
+import initializePlayer from '../../player';
 
 export default class LevelArtist extends AbstractView {
   constructor(state) {
@@ -33,6 +34,9 @@ export default class LevelArtist extends AbstractView {
 
   bind() {
     const answers = this.element.querySelectorAll(`.main-list [name="answer"]`);
+    const players = this.element.querySelectorAll(`.player-wrapper`);
+
+    [...players].forEach((player, index) => initializePlayer(player, this.question.srcData, true));
 
     Array.from(answers).forEach((answer) => {
       answer.onclick = (e) => {

@@ -8,6 +8,7 @@ export default class Results extends AbstractView {
   }
 
   get template() {
+    debugger;
     const content = {
       win: {
         title: `Вы настоящий меломан!`,
