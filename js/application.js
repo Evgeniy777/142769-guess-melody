@@ -1,15 +1,13 @@
 import Welcome from './screens/welcome-screen/welcome-screen';
 import Game from './screens/game/game';
 import Result from './screens/results/results';
-import {initialState} from './data/initialState';
+import {getHash} from './engine/getHash';
 
 const ControllerID = {
   WELCOME: ``,
   GAME: `game`,
   RESULT: `result`
 };
-
-const getControllerIDFromHash = (hash) => hash.replace(`#`, ``);
 
 class Application {
   constructor() {
@@ -20,30 +18,35 @@ class Application {
     };
 
     window.onhashchange = () => {
-      this.changeController(getControllerIDFromHash(location.hash));
+      this.changeController();
     };
   }
 
-  changeController(route = ``) {
-    const Controller = this.routes[route];
-    new Controller(initialState).init();
+  changeController() {
+    const hash = getHash(location.hash);
+    const presenter = new this.routes[hash]();
+
+    presenter.init();
   }
 
   init() {
-    this.changeController(getControllerIDFromHash(location.hash));
+    this.changeController();
   }
 
-  showWelcome(state) {
-    console.log(`showWelcome`);
+  showWelcome() {
     location.hash = ControllerID.WELCOME;
   }
 
-  showGame(state) {
+  showGame() {
     location.hash = ControllerID.GAME;
   }
 
   showResult(state) {
-    location.hash = ControllerID.RESULT;
+    const stateObject = JSON.stringify({
+      state
+    });
+    const encode = encodeURIComponent(stateObject);
+    location.hash = `${ControllerID.RESULT}=${encode}`;
   }
 }
 

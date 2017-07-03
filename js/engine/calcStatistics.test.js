@@ -11,12 +11,14 @@ const statistics = [
 describe(`Game statistics`, () => {
   it(`should be correctly displayed for 3/5 = 0.6 = 60%`, () => {
     const state = Object.freeze({
-      remainingTime: 35,
+      remainingTime: 120,
+      time: 35,
       lives: 3,
-      answers: 10,
+      answers: 9,
       scores: 0,
       questionIndex: 0,
-      ratio: 0
+      ratio: 0,
+      result: ``
     });
     const newState = Object.assign({}, state);
     assert.equal(calcStatistics(newState, statistics), 60);

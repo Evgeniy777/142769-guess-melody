@@ -9,20 +9,15 @@ export default class WelcomeController {
   }
 
   init() {
-    this.showScreen();
+    // this.showScreen();
     this.screen.onStartGame = application.showGame;
 
-    console.log(`initWelcome`);
     application.showWelcome();
     showScreen(this.screen.element);
 
     this.screen.onStartGame = () => {
       application.showGame();
     };
-  }
-
-  showScreen() {
-    showScreen(this.screen.element);
   }
 }
 
