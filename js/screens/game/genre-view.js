@@ -7,7 +7,7 @@ export default class LevelGenre extends AbstractView {
   constructor(state, questions) {
     super();
     this.state = state;
-    this.questions = questions;
+    this.questions = questions.quests;
     this.question = this.questions[this.state.questionIndex];
   }
 

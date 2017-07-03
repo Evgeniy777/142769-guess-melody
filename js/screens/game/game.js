@@ -81,7 +81,7 @@ export default class GameController {
   }
 
   setQuestion() {
-    return this.questions[this.state.questionIndex];
+    return this.questions.quests[this.state.questionIndex];
   }
 
   getNextGameScreen() {

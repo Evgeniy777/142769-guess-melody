@@ -2,6 +2,7 @@ import Welcome from './screens/welcome-screen/welcome-screen';
 import Game from './screens/game/game';
 import Result from './screens/results/results';
 import {getHash} from './engine/getHash';
+import Model from './data/model';
 
 const ControllerID = {
   WELCOME: ``,
@@ -11,6 +12,8 @@ const ControllerID = {
 
 class Application {
   constructor() {
+    this.model = new Model();
+
     window.onhashchange = () => {
       this.changeController();
     };
@@ -24,8 +27,7 @@ class Application {
   }
 
   init() {
-    window.fetch(`https://intensive-ecmascript-server-btfgudlkpi.now.sh/guess-melody/questions`)
-      .then((response) => response.json())
+    this.model.load()
       .then((quests) => {
         console.log(quests);
         this.initRoutes(quests);
