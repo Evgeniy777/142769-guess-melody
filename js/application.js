@@ -11,12 +11,6 @@ const ControllerID = {
 
 class Application {
   constructor() {
-    this.routes = {
-      [ControllerID.WELCOME]: Welcome,
-      [ControllerID.GAME]: Game,
-      [ControllerID.RESULT]: Result
-    };
-
     window.onhashchange = () => {
       this.changeController();
     };
@@ -24,13 +18,27 @@ class Application {
 
   changeController() {
     const hash = getHash(location.hash);
-    const presenter = new this.routes[hash]();
+    const presenter = this.routes[hash];
 
     presenter.init();
   }
 
   init() {
-    this.changeController();
+    window.fetch(`https://intensive-ecmascript-server-btfgudlkpi.now.sh/guess-melody/questions`)
+      .then((response) => response.json())
+      .then((quests) => {
+        console.log(quests);
+        this.initRoutes(quests);
+        this.changeController();
+      });
+  }
+
+  initRoutes(data) {
+    this.routes = {
+      [ControllerID.WELCOME]: new Welcome(),
+      [ControllerID.GAME]: new Game(data),
+      [ControllerID.RESULT]: new Result()
+    };
   }
 
   showWelcome() {

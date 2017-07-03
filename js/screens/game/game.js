@@ -6,15 +6,16 @@ import {checkArtist} from '../../engine/checkArtist';
 import {checkGenres} from '../../engine/checkGenres';
 import LevelArtist from './artist-view';
 import LevelGenre from './genre-view';
-import {gameQuestions} from '../../data/gameQuestions';
+// import {gameQuestions} from '../../data/gameQuestions';
 import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 
 export default class GameController {
-  constructor(state) {
+  constructor(questions) {
     this.state = initialState;
     this.timer = new Timer(this.state);
     this.gameScreen = null;
+    this.questions = questions;
   }
 
   init() {
@@ -69,7 +70,7 @@ export default class GameController {
 
   showGameScreen() {
     if (this.state.lives > 0 && this.state.remainingTime > 0) {
-      if (this.state.questionIndex <= gameQuestions.length - 1) {
+      if (this.state.questionIndex <= this.questions.length - 1) {
         this.initQuestion();
       } else {
         this.checkResult();
@@ -80,18 +81,18 @@ export default class GameController {
   }
 
   setQuestion() {
-    return gameQuestions[this.state.questionIndex];
+    return this.questions[this.state.questionIndex];
   }
 
   getNextGameScreen() {
     const questionType = this.setQuestion().type;
 
     const games = {
-      guessArtist: LevelArtist,
-      guessGenre: LevelGenre
+      artist: LevelArtist,
+      genre: LevelGenre
     };
 
-    this.gameScreen = new games[questionType](this.state);
+    this.gameScreen = new games[questionType](this.state, this.questions);
 
     return this.gameScreen;
   }
