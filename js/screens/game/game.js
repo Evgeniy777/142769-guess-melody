@@ -7,12 +7,12 @@ import {checkGenres} from '../../engine/checkGenres';
 import LevelArtist from './artist-view';
 import LevelGenre from './genre-view';
 import {gameQuestions} from '../../data/gameQuestions';
+import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 
 export default class GameController {
   constructor(state) {
-    this.initialState = state;
-    this.state = state;
+    this.state = initialState;
     this.timer = new Timer(this.state);
     this.gameScreen = null;
   }
@@ -20,8 +20,9 @@ export default class GameController {
   init() {
     this.timer = new Timer(this.state);
     this.initQuestion();
-    this.showTimer();
+    // this.showTimer();
     this.timer.finishGame = () => {
+      debugger;
       this.checkResult();
     };
   }

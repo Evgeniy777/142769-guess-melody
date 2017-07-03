@@ -6,11 +6,13 @@ import {showScreen} from '../../engine/show-screen';
 
 export default class ResultsScreen {
   constructor(state) {
+    debugger;
     this.state = state;
     this.screen = new Results(this.state);
   }
 
   init() {
+
     // this.showScreen();
     // this.screen.onStartNewGame = Application.showWelcome;
     this.calcStatistics();
