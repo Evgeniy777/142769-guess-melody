@@ -19,8 +19,8 @@ export default class GameController {
 
   init() {
     this.timer = new Timer(this.state);
+    this.showTimer();
     this.initQuestion();
-    // this.showTimer();
     this.timer.finishGame = () => {
       this.checkResult();
     };

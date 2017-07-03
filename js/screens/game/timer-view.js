@@ -93,8 +93,8 @@ export default class Timer extends AbstractView {
   }
 
   getTime() {
-    const minutes = parseInt(this.element.querySelector(`.timer-value-mins`).textContent, 10);
-    const seconds = parseInt(this.element.querySelector(`.timer-value-secs`).textContent, 10);
+    const minutes = parseInt(document.querySelector(`.timer-value-mins`).textContent, 10);
+    const seconds = parseInt(document.querySelector(`.timer-value-secs`).textContent, 10);
 
     return {minutes, seconds};
   }
