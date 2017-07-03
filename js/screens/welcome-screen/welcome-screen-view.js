@@ -4,7 +4,7 @@ import {initialState} from '../../data/initialState';
 export default class Welcome extends AbstractView {
   constructor(state) {
     super();
-    this.state = initialState;
+    this.state = state;
   }
 
   get template() {
