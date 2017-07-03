@@ -22,7 +22,6 @@ export default class GameController {
     this.initQuestion();
     // this.showTimer();
     this.timer.finishGame = () => {
-      debugger;
       this.checkResult();
     };
   }

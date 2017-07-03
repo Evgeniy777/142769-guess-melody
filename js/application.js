@@ -33,11 +33,11 @@ class Application {
     this.changeController();
   }
 
-  showWelcome(state) {
+  showWelcome() {
     location.hash = ControllerID.WELCOME;
   }
 
-  showGame(state) {
+  showGame() {
     location.hash = ControllerID.GAME;
   }
 

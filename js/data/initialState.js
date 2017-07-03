@@ -1,5 +1,5 @@
 export const initialState = Object.freeze({
-  remainingTime: 10,
+  remainingTime: 120,
   time: 0,
   lives: 3,
   answers: 0,
