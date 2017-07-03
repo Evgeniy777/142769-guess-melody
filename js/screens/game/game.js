@@ -85,7 +85,6 @@ export default class GameController {
   }
 
   getNextGameScreen() {
-    debugger;
     const questionType = this.setQuestion().type;
 
     const games = {

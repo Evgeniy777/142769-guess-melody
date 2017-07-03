@@ -7,12 +7,11 @@ export default class LevelGenre extends AbstractView {
   constructor(state, questions) {
     super();
     this.state = state;
-    this.questions = questions;
+    this.questions = questions.quests;
     this.question = this.questions[this.state.questionIndex];
   }
 
   get template() {
-    debugger;
     return `<section class="main main--level main--level-genre">
         <h2 class="title">${this.question.question}</h2>
         <form class="genre">
