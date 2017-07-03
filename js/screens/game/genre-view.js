@@ -12,6 +12,7 @@ export default class LevelGenre extends AbstractView {
   }
 
   get template() {
+    debugger;
     return `<section class="main main--level main--level-genre">
         <h2 class="title">${this.question.question}</h2>
         <form class="genre">
