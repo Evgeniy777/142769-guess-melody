@@ -12,9 +12,9 @@ describe(`Game statistics`, () => {
   it(`should be correctly displayed for 3/5 = 0.6 = 60%`, () => {
     const state = Object.freeze({
       remainingTime: 120,
-      time: 35,
+      time: 33,
       lives: 3,
-      answers: 9,
+      answers: 10,
       scores: 0,
       questionIndex: 0,
       ratio: 0,

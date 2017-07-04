@@ -29,7 +29,7 @@ class Application {
   init() {
     this.model.load()
       .then((quests) => {
-        console.log(quests);
+        // console.log(quests);
         this.initRoutes(quests);
         this.changeController();
       });

@@ -6,7 +6,6 @@ import {checkArtist} from '../../engine/checkArtist';
 import {checkGenres} from '../../engine/checkGenres';
 import LevelArtist from './artist-view';
 import LevelGenre from './genre-view';
-// import {gameQuestions} from '../../data/gameQuestions';
 import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 

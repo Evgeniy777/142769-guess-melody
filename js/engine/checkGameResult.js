@@ -1,7 +1,6 @@
 import {setScores} from '../engine/setScores';
 import {formatTimeObjToSecs} from '../engine/formatTimeObjToSecs';
 
-
 export const checkGameResult = (gameResult, gameState, startTime, responseTime) => {
   const state = Object.assign({}, gameState);
   const time = formatTimeObjToSecs(startTime) - formatTimeObjToSecs(responseTime);

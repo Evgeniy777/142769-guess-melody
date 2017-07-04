@@ -5,7 +5,7 @@ const testQuestion = {
   type: `guessGenre`,
   text: `Выберите рок треки`,
   genre: `rock`,
-  options: [
+  answers: [
     {
       id: 1,
       dataUrl: `music/9th_Symphony_Finale_by_Beethoven.mp3`,
@@ -32,16 +32,16 @@ const testQuestion = {
 describe(`Guessing genres`, () => {
   it(`is won if all the right answers are selected`, () => {
     const testAnswer = [true, false, false, true];
-    assert.equal(checkGenres(testAnswer, testQuestion), true);
+    assert.equal(checkGenres(testQuestion, testAnswer), true);
   });
 
   it(`is lost if not all the correct answers are selected`, () => {
     const testAnswer = [true, false, true, false];
-    assert.notEqual(checkGenres(testAnswer, testQuestion), true);
+    assert.notEqual(checkGenres(testQuestion, testAnswer), true);
   });
 
   it(`is lost if one wrong answer is selected`, () => {
     const testAnswer = [false, false, true, false];
-    assert.notEqual(checkGenres(testAnswer, testQuestion), true);
+    assert.notEqual(checkGenres(testQuestion, testAnswer), true);
   });
 });
