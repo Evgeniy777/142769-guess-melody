@@ -1,32 +1,39 @@
 import assert from 'assert';
 import {checkArtist} from '../engine/checkArtist';
 
-const testQuestion = {
-  type: `guessArtist`,
-  srcData: `media/9th_Symphony_Finale_by_Beethoven.mp3`,
-  options: [
-    {
-      id: 1,
-      correct: true,
-      text: `Пелагея`,
-      srcImg: `http://lorempixel.com/400/200`
+const testQuestion = [
+  {
+    image: {
+      url: `https://freemusicarchive.org/file/images/artists/Broke_For_Free_-_2013011621055318.jpg?width=300&height=300`,
+      width: 300,
+      height: 300
     },
-    {
-      id: 2,
-      text: `Краснознаменная дивизия имени моей бабушки`,
-      srcImg: `http://lorempixel.com/300/200`
+    title: `Broke For Free`,
+    isCorrect: true
+  },
+  {
+    image: {
+      url: `https://freemusicarchive.org/file/images/artists/Broke_For_Free_-_2013011621055318.jpg?width=300&height=300`,
+      width: 300,
+      height: 300
     },
-    {
-      id: 3,
-      text: `Lorde`,
-      srcImg: `http://lorempixel.com/200/200`
-    }
-  ]
-};
+    title: `Broke For Free`,
+    isCorrect: false
+  },
+  {
+    image: {
+      url: `https://freemusicarchive.org/file/images/artists/Broke_For_Free_-_2013011621055318.jpg?width=300&height=300`,
+      width: 300,
+      height: 300
+    },
+    title: `Broke For Free`,
+    isCorrect: false
+  }
+];
 
 describe(`Guessing artist`, () => {
   it(`is won if right answer is selected`, () => {
-    assert(checkArtist(testQuestion, 1), true);
+    assert(checkArtist(testQuestion, 0), true);
   });
 
   it(`is lost if wrong answer is selected`, () => {

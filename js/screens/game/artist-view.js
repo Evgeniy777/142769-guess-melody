@@ -38,7 +38,7 @@ export default class LevelArtist extends AbstractView {
 
     Array.from(answers).forEach((answer) => {
       answer.onclick = (e) => {
-        const answerIndex = Array.from(answers).indexOf(e.target) + 1;
+        const answerIndex = Array.from(answers).indexOf(e.target);
         this.onAnswer(this.question.type, answerIndex);
       };
     });

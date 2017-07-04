@@ -4,8 +4,8 @@ export default {
     text: `Правила просты&nbsp;— за&nbsp;2 минуты дать максимальное количество правильных ответов.<br> Удачи!`
   },
   types: {
-    guessArtist: `guessArtist`,
-    guessGenre: `guessGenre`
+    guessArtist: `artist`,
+    guessGenre: `genre`
   },
   result: {
     win: `Вы настоящий меломан!`,
