@@ -1,5 +1,4 @@
 import AbstractView from '../../view';
-import {initialState} from '../../data/initialState';
 
 export default class Welcome extends AbstractView {
   constructor(state) {

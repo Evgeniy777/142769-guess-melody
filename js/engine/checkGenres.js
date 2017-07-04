@@ -1,10 +1,9 @@
 export const checkGenres = (question, answers) => {
   const correctGenre = question.genre;
-  const options = question.options;
   const correctOptions = [];
 
-  options.find((option) => {
-    if (option.genre === correctGenre) {
+  question.answers.find((answer) => {
+    if (answer.genre === correctGenre) {
       correctOptions.push(true);
     } else {
       correctOptions.push(false);

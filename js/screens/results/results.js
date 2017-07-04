@@ -4,11 +4,13 @@ import {statistics} from '../../data/statistics';
 import {calcStatistics} from '../../engine/calcStatistics';
 import {showScreen} from '../../engine/show-screen';
 import {getHashObject} from '../../engine/getHash';
+import Model from '../../data/model';
 
 export default class ResultsScreen {
   constructor() {
     const params = getHashObject(location.hash);
     this.state = params.state;
+    this.model = new Model();
   }
 
   init() {
@@ -18,6 +20,7 @@ export default class ResultsScreen {
       application.showWelcome();
     };
 
+    this.model.send(this.sendStatistics());
     showScreen(this.screen.element);
   }
 
@@ -28,5 +31,13 @@ export default class ResultsScreen {
     }
     this.state = state;
     return this.state;
+  }
+
+  sendStatistics() {
+    return {
+      date: new Date(),
+      time: this.state.time,
+      answers: this.state.answers
+    };
   }
 }

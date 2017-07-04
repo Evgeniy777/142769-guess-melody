@@ -6,7 +6,6 @@ import {checkArtist} from '../../engine/checkArtist';
 import {checkGenres} from '../../engine/checkGenres';
 import LevelArtist from './artist-view';
 import LevelGenre from './genre-view';
-// import {gameQuestions} from '../../data/gameQuestions';
 import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 
@@ -19,10 +18,12 @@ export default class GameController {
   }
 
   init() {
+    this.timer.resetTimer();
     this.timer = new Timer(this.state);
     this.showTimer();
     this.initQuestion();
     this.timer.finishGame = () => {
+      this.timer.resetTimer();
       this.checkResult();
     };
   }
@@ -39,6 +40,7 @@ export default class GameController {
     } else {
       state.result = `fail`;
     }
+    this.timer.resetTimer();
     application.showResult(state);
   }
 
@@ -59,9 +61,9 @@ export default class GameController {
 
   checkAnswer(questionType, answer) {
     const question = this.setQuestion();
-    let checkedResult = false;
+    let checkedResult;
     if (questionType === game.types.guessArtist) {
-      checkedResult = checkArtist(question, answer);
+      checkedResult = checkArtist(question.answers, answer);
     } else if (questionType === game.types.guessGenre) {
       checkedResult = checkGenres(question, answer);
     }
@@ -69,12 +71,8 @@ export default class GameController {
   }
 
   showGameScreen() {
-    if (this.state.lives > 0 && this.state.remainingTime > 0) {
-      if (this.state.questionIndex <= this.questions.length - 1) {
-        this.initQuestion();
-      } else {
-        this.checkResult();
-      }
+    if (this.state.lives > 0 && (this.state.questionIndex <= this.questions.quests.length - 1)) {
+      this.initQuestion();
     } else {
       this.checkResult();
     }
