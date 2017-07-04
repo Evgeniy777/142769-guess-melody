@@ -18,10 +18,12 @@ export default class GameController {
   }
 
   init() {
+    this.timer.resetTimer();
     this.timer = new Timer(this.state);
     this.showTimer();
     this.initQuestion();
     this.timer.finishGame = () => {
+      this.timer.resetTimer();
       this.checkResult();
     };
   }
@@ -38,6 +40,7 @@ export default class GameController {
     } else {
       state.result = `fail`;
     }
+    this.timer.resetTimer();
     application.showResult(state);
   }
 
@@ -68,12 +71,8 @@ export default class GameController {
   }
 
   showGameScreen() {
-    if (this.state.lives > 0 && this.state.remainingTime > 0) {
-      if (this.state.questionIndex <= this.questions.quests.length - 1) {
-        this.initQuestion();
-      } else {
-        this.checkResult();
-      }
+    if (this.state.lives > 0 && (this.state.questionIndex <= this.questions.quests.length - 1)) {
+      this.initQuestion();
     } else {
       this.checkResult();
     }

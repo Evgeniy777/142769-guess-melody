@@ -21,7 +21,8 @@ class Application {
 
   changeController() {
     const hash = getHash(location.hash);
-    const presenter = this.routes[hash];
+    const Controller = this.routes[hash];
+    const presenter = new Controller(this.data);
 
     presenter.init();
   }
@@ -35,10 +36,11 @@ class Application {
   }
 
   initRoutes(data) {
+    this.data = data;
     this.routes = {
-      [ControllerID.WELCOME]: new Welcome(),
-      [ControllerID.GAME]: new Game(data),
-      [ControllerID.RESULT]: new Result()
+      [ControllerID.WELCOME]: Welcome,
+      [ControllerID.GAME]: Game,
+      [ControllerID.RESULT]: Result
     };
   }
 
