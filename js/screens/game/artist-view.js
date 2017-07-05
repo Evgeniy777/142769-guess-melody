@@ -1,5 +1,4 @@
 import AbstractView from '../../view.js';
-// import {gameQuestions} from '../../data/gameQuestions';
 import initializePlayer from '../../player';
 
 export default class LevelArtist extends AbstractView {

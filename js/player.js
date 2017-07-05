@@ -1,4 +1,5 @@
 import {animationObject} from './animate';
+import destroyPlayer from './engine/destroyPlayer';
 
 const updateState = (element, player) => {
   element.querySelector(`.player-status`).style.width =
@@ -27,25 +28,8 @@ const switchState = (state, player, element) => {
 };
 
 
-const destroyPlayer = (element, state) => {
-  const player = element.querySelector(`audio`);
-  const button = element.querySelector(`button`);
-
-  if (state.stopAnimation) {
-    state.stopAnimation();
-  }
-
-  player.src = null;
-  button.onclick = null;
-  element.innerHTML = ``;
-  state = null;
-
-  return true;
-};
-
-
 const initializePlayer = (element, file, autoplay = false, controllable = true) => {
-  let state = {};
+  const state = {};
 
   const content = document.querySelector(`template`)
     .content
@@ -56,7 +40,9 @@ const initializePlayer = (element, file, autoplay = false, controllable = true) 
 
   player.onloadeddata = () => {
     if (controllable) {
-      button.onclick = () => switchState(state, player, content);
+      button.onclick = () => {
+        switchState(state, player, content);
+      };
     }
 
     if (autoplay) {

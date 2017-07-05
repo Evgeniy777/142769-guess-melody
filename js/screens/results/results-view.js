@@ -1,4 +1,5 @@
 import AbstractView from '../../view';
+import {formatSecondsToTime} from '../../engine/formatSecondsToTime';
 
 export default class Results extends AbstractView {
   constructor(state) {
@@ -6,10 +7,11 @@ export default class Results extends AbstractView {
     this.state = state;
   }
   get template() {
+    const time = formatSecondsToTime(this.state.time);
     const content = {
       win: {
         title: `Вы настоящий меломан!`,
-        summary: (state) => `За&nbsp;${this.state.time}&nbsp;минуты<br>вы&nbsp;отгадали ${this.state.answers}&nbsp;мелодии`,
+        summary: (state) => `За&nbsp;${time}<br>вы&nbsp;отгадали ${this.state.answers}&nbsp;мелодии`,
         ratio: (state) => `<span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${this.state.ratio}%&nbsp;игроков</span>`
       },
       fail: {

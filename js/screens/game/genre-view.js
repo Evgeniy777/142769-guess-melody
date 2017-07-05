@@ -1,5 +1,4 @@
 import AbstractView from '../../view.js';
-// import {gameQuestions} from '../../data/gameQuestions';
 import game from '../../data/game';
 import initializePlayer from '../../player';
 
