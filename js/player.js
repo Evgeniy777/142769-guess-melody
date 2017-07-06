@@ -14,6 +14,7 @@ const syncState = (player, element) => {
 
 const switchState = (state, player, element) => {
   if (player.paused) {
+    pausePlayers();
     player.play();
     state.stopAnimation = animationObject.animate(
         animationObject.getAnimation(player.currentTime, 1000, player.duration),
@@ -27,6 +28,13 @@ const switchState = (state, player, element) => {
   syncState(player, element);
 };
 
+const pausePlayers = () => {
+  const players = document.querySelectorAll(`audio`);
+
+  Array.from(players, (player) => {
+    player.pause();
+  });
+};
 
 const initializePlayer = (element, file, autoplay = false, controllable = true) => {
   const state = {};

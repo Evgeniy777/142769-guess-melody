@@ -31,8 +31,10 @@ export default class LevelGenre extends AbstractView {
     const inputs = this.element.querySelectorAll(`.genre-answer [name="answer"]`);
     const players = this.element.querySelectorAll(`.player-wrapper`);
 
-    [...players].forEach((player, index) => initializePlayer(player, this.question.answers[index].src));
+    const audio = [];
 
+    [...players].forEach((player, index) => audio.push(initializePlayer(player, this.question.answers[index].src)));
+    
     sendAnswer.onclick = () => {
       const checkedAnswers = [];
       inputs.forEach((input) => {
@@ -42,6 +44,7 @@ export default class LevelGenre extends AbstractView {
           checkedAnswers.push(game.answer.wrong);
         }
       });
+      audio.forEach((player) => {player()});
       this.onAnswer(this.question.type, checkedAnswers);
     };
   }
