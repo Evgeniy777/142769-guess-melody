@@ -1,5 +1,4 @@
 import AbstractView from '../../view.js';
-// import {gameQuestions} from '../../data/gameQuestions';
 import game from '../../data/game';
 import initializePlayer from '../../player';
 
@@ -22,7 +21,7 @@ export default class LevelGenre extends AbstractView {
             <label class="genre-answer-check" for="a-${answer.genre}"></label>
           </div>
         `).join(``)}
-          <button class="genre-answer-send" type="submit">Ответить</button>
+          <input class="genre-answer-send" type="submit" value="Ответить">
         </form>
       </section>`;
   }
@@ -31,10 +30,12 @@ export default class LevelGenre extends AbstractView {
     const sendAnswer = this.element.querySelector(`.genre-answer-send`);
     const inputs = this.element.querySelectorAll(`.genre-answer [name="answer"]`);
     const players = this.element.querySelectorAll(`.player-wrapper`);
+    const audio = [];
 
-    [...players].forEach((player, index) => initializePlayer(player, this.question.answers[index].src));
+    Array.from(players).forEach((player, index) => audio.push(initializePlayer(player, this.question.answers[index].src)));
 
-    sendAnswer.onclick = () => {
+    sendAnswer.onclick = (e) => {
+      e.preventDefault();
       const checkedAnswers = [];
       inputs.forEach((input) => {
         if (input.checked) {
@@ -42,6 +43,9 @@ export default class LevelGenre extends AbstractView {
         } else {
           checkedAnswers.push(game.answer.wrong);
         }
+      });
+      audio.forEach((player) => {
+        player();
       });
       this.onAnswer(this.question.type, checkedAnswers);
     };

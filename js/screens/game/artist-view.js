@@ -1,5 +1,4 @@
 import AbstractView from '../../view.js';
-// import {gameQuestions} from '../../data/gameQuestions';
 import initializePlayer from '../../player';
 
 export default class LevelArtist extends AbstractView {
@@ -32,14 +31,14 @@ export default class LevelArtist extends AbstractView {
 
   bind() {
     const answers = this.element.querySelectorAll(`.main-list [name="answer"]`);
-    const players = this.element.querySelectorAll(`.player-wrapper`);
-
-    [...players].forEach((player, index) => initializePlayer(player, this.question.src, true));
+    const player = this.element.querySelector(`.player-wrapper`);
+    const removePlayer = initializePlayer(player, this.question.src, true);
 
     Array.from(answers).forEach((answer) => {
       answer.onclick = (e) => {
         const answerIndex = Array.from(answers).indexOf(e.target);
         this.onAnswer(this.question.type, answerIndex);
+        removePlayer();
       };
     });
   }

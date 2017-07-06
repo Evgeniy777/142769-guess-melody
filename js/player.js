@@ -1,4 +1,5 @@
 import {animationObject} from './animate';
+import destroyPlayer from './engine/destroyPlayer';
 
 const updateState = (element, player) => {
   element.querySelector(`.player-status`).style.width =
@@ -13,6 +14,7 @@ const syncState = (player, element) => {
 
 const switchState = (state, player, element) => {
   if (player.paused) {
+    pausePlayers();
     player.play();
     state.stopAnimation = animationObject.animate(
         animationObject.getAnimation(player.currentTime, 1000, player.duration),
@@ -26,26 +28,16 @@ const switchState = (state, player, element) => {
   syncState(player, element);
 };
 
+const pausePlayers = () => {
+  const players = document.querySelectorAll(`audio`);
 
-const destroyPlayer = (element, state) => {
-  const player = element.querySelector(`audio`);
-  const button = element.querySelector(`button`);
-
-  if (state.stopAnimation) {
-    state.stopAnimation();
-  }
-
-  player.src = null;
-  button.onclick = null;
-  element.innerHTML = ``;
-  state = null;
-
-  return true;
+  Array.from(players, (player) => {
+    player.pause();
+  });
 };
 
-
 const initializePlayer = (element, file, autoplay = false, controllable = true) => {
-  let state = {};
+  const state = {};
 
   const content = document.querySelector(`template`)
     .content
@@ -56,7 +48,10 @@ const initializePlayer = (element, file, autoplay = false, controllable = true) 
 
   player.onloadeddata = () => {
     if (controllable) {
-      button.onclick = () => switchState(state, player, content);
+      button.onclick = (e) => {
+        e.preventDefault();
+        switchState(state, player, content);
+      };
     }
 
     if (autoplay) {
