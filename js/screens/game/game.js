@@ -54,7 +54,9 @@ export default class GameController {
     this.showQuestion();
     this.gameScreen.onAnswer = (questionType, answer) => {
       const players = document.querySelectorAll(`audio`);
-      [...players].forEach(player => {player.pause()});
+      [...players].forEach((player) => {
+        player.pause();
+      });
       const responseTime = this.timer.getTime();
       this.state = checkGameResult(this.checkAnswer(questionType, answer), this.state, startTime, responseTime);
       this.showGameScreen();
