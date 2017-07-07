@@ -9,6 +9,11 @@ import LevelGenre from './genre-view';
 import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 
+const GAMES = {
+  artist: LevelArtist,
+  genre: LevelGenre
+};
+
 export default class GameController {
   constructor(questions) {
     this.state = initialState;
@@ -88,13 +93,7 @@ export default class GameController {
 
   getNextGameScreen() {
     const questionType = this.setQuestion().type;
-
-    const games = {
-      artist: LevelArtist,
-      genre: LevelGenre
-    };
-
-    this.gameScreen = new games[questionType](this.state, this.questions);
+    this.gameScreen = new GAMES[questionType](this.state, this.questions);
 
     return this.gameScreen;
   }

@@ -21,7 +21,7 @@ export default class LevelGenre extends AbstractView {
             <label class="genre-answer-check" for="a-${index}-${answer.genre}"></label>
           </div>
         `).join(``)}
-          <input class="genre-answer-send" type="submit" value="Ответить">
+          <input class="genre-answer-send" type="button" value="Ответить">
         </form>
       </section>`;
   }

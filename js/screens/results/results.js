@@ -7,7 +7,6 @@ import Model from '../../data/model';
 
 export default class ResultsScreen {
   constructor() {
-
     const params = getHashObject(location.hash);
     this.state = params.state;
     this.model = new Model();
