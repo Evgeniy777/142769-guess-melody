@@ -1,26 +1,26 @@
 export default class Model {
   load() {
-    return Model.getQuests()
+    return this.getQuests()
       .then((quests) => {
-        return Model.getStats()
+        return this.getStats()
           .then((stats) => {
             return {quests, stats};
           });
       });
   }
 
-  static getQuests() {
+  getQuests() {
     return window.fetch(`https://intensive-ecmascript-server-btfgudlkpi.now.sh/guess-melody/questions`)
       .then((response) => response.json());
   }
 
-  static getStats() {
+  getStats() {
     return window.fetch(`https://intensive-ecmascript-server-btfgudlkpi.now.sh/guess-melody/stats/Evgeniy777`)
       .then((response) => response.json())
       .catch((reject) => []);
   }
 
-  static send(data) {
+  send(data) {
     const body = JSON.stringify(data);
 
     return window.fetch(`https://intensive-ecmascript-server-btfgudlkpi.now.sh/guess-melody/stats/Evgeniy777`, {

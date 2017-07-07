@@ -1,4 +1,5 @@
 import Results from './results-view';
+import application from '../../application';
 import {calcStatistics} from '../../engine/calcStatistics';
 import {showScreen} from '../../engine/show-screen';
 import {getHashObject} from '../../engine/getHash';
@@ -17,15 +18,16 @@ export default class ResultsScreen {
     this.screen = new Results(this.calcStatistics());
 
     this.screen.onStartNewGame = () => {
-      ResultsScreen.showWelcome();
+      application.showWelcome();
     };
 
-    ResultsScreen.send(this.sendStatistics());
+    this.model.send(this.sendStatistics());
     showScreen(this.screen.element);
   }
 
   calcStatistics() {
     const state = Object.assign({}, this.state);
+    state.date = Date.now();
     if (state.result === `win`) {
       state.ratio = calcStatistics(state, this.lastGames);
     }
@@ -35,7 +37,7 @@ export default class ResultsScreen {
 
   sendStatistics() {
     return {
-      date: new Date().now(),
+      date: this.state.date,
       time: this.state.time,
       answers: this.state.answers
     };

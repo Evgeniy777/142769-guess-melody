@@ -1,5 +1,5 @@
 export const formatGameResult = (seconds, answersCount) => {
-  const mins = ~~(seconds / 60);
+  const mins = Math.trunc(seconds / 60);
   const secs = seconds % 60;
   let end = ``;
   let answerEnd = ``;
