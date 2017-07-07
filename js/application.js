@@ -52,9 +52,9 @@ class Application {
     location.hash = ControllerID.GAME;
   }
 
-  showResult(state) {
+  showResult(state, stats) {
     const stateObject = JSON.stringify({
-      state
+      state, stats
     });
     const encode = encodeURIComponent(stateObject);
     location.hash = `${ControllerID.RESULT}=${encode}`;

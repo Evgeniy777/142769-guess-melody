@@ -6,5 +6,6 @@ export const initialState = Object.freeze({
   scores: 0,
   questionIndex: 0,
   ratio: 0,
-  result: ``
+  result: ``,
+  date: 0
 });

@@ -9,6 +9,11 @@ import LevelGenre from './genre-view';
 import {initialState} from '../../data/initialState';
 import {showScreen} from '../../engine/show-screen';
 
+const GAMES = {
+  artist: LevelArtist,
+  genre: LevelGenre
+};
+
 export default class GameController {
   constructor(questions) {
     this.state = initialState;
@@ -33,7 +38,7 @@ export default class GameController {
     timerContainer.appendChild(this.timer.element);
   }
 
-  checkResult() {
+  checkResult(stats) {
     const state = Object.assign({}, this.state);
     if (state.answers > 0) {
       state.result = `win`;
@@ -41,7 +46,7 @@ export default class GameController {
       state.result = `fail`;
     }
     this.timer.resetTimer();
-    application.showResult(state);
+    application.showResult(state, stats);
   }
 
   showQuestion() {
@@ -78,7 +83,7 @@ export default class GameController {
     if (this.state.lives > 0 && (this.state.questionIndex <= this.questions.quests.length - 1)) {
       this.initQuestion();
     } else {
-      this.checkResult();
+      this.checkResult(this.questions.stats);
     }
   }
 
@@ -88,13 +93,7 @@ export default class GameController {
 
   getNextGameScreen() {
     const questionType = this.setQuestion().type;
-
-    const games = {
-      artist: LevelArtist,
-      genre: LevelGenre
-    };
-
-    this.gameScreen = new games[questionType](this.state, this.questions);
+    this.gameScreen = new GAMES[questionType](this.state, this.questions);
 
     return this.gameScreen;
   }
