@@ -33,7 +33,7 @@ export default class GameController {
     timerContainer.appendChild(this.timer.element);
   }
 
-  checkResult() {
+  checkResult(stats) {
     const state = Object.assign({}, this.state);
     if (state.answers > 0) {
       state.result = `win`;
@@ -41,7 +41,7 @@ export default class GameController {
       state.result = `fail`;
     }
     this.timer.resetTimer();
-    application.showResult(state);
+    application.showResult(state, stats);
   }
 
   showQuestion() {
@@ -78,7 +78,7 @@ export default class GameController {
     if (this.state.lives > 0 && (this.state.questionIndex <= this.questions.quests.length - 1)) {
       this.initQuestion();
     } else {
-      this.checkResult();
+      this.checkResult(this.questions.stats);
     }
   }
 

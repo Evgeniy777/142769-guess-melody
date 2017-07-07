@@ -3,8 +3,9 @@ import {compareStatistics} from '../engine/compareStatistics';
 export const calcStatistics = (state, statistics) => {
   const newState = Object.assign({}, state);
   const newStatisticItem = {
-    time: newState.time,
-    answers: newState.answers
+    answers: newState.answers,
+    date: new Date(),
+    time: newState.time
   };
   statistics.push(newStatisticItem);
 
