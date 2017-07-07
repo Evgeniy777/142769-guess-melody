@@ -1,5 +1,4 @@
 import Timer from '../../screens/game/timer-view';
-import application from '../../application';
 import game from '../../data/game';
 import {checkGameResult} from '../../engine/checkGameResult';
 import {checkArtist} from '../../engine/checkArtist';
@@ -18,12 +17,12 @@ export default class GameController {
   }
 
   init() {
-    this.timer.resetTimer();
+    GameController.resetTimer();
     this.timer = new Timer(this.state);
     this.showTimer();
     this.initQuestion();
     this.timer.finishGame = () => {
-      this.timer.resetTimer();
+      GameController.resetTimer();
       this.checkResult();
     };
   }
@@ -40,8 +39,8 @@ export default class GameController {
     } else {
       state.result = `fail`;
     }
-    this.timer.resetTimer();
-    application.showResult(state, stats);
+    GameController.resetTimer();
+    GameController.showResult(state, stats);
   }
 
   showQuestion() {
@@ -49,7 +48,7 @@ export default class GameController {
   }
 
   initQuestion() {
-    const startTime = this.timer.getTime();
+    const startTime = GameController.getTime();
     this.getNextGameScreen();
     this.showQuestion();
     this.gameScreen.onAnswer = (questionType, answer) => {
@@ -57,7 +56,7 @@ export default class GameController {
       [...players].forEach((player) => {
         player.pause();
       });
-      const responseTime = this.timer.getTime();
+      const responseTime = GameController.getTime();
       this.state = checkGameResult(this.checkAnswer(questionType, answer), this.state, startTime, responseTime);
       this.showGameScreen();
     };

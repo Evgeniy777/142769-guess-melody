@@ -1,5 +1,4 @@
 import Results from './results-view';
-import application from '../../application';
 import {calcStatistics} from '../../engine/calcStatistics';
 import {showScreen} from '../../engine/show-screen';
 import {getHashObject} from '../../engine/getHash';
@@ -18,10 +17,10 @@ export default class ResultsScreen {
     this.screen = new Results(this.calcStatistics());
 
     this.screen.onStartNewGame = () => {
-      application.showWelcome();
+      ResultsScreen.showWelcome();
     };
 
-    this.model.send(this.sendStatistics());
+    ResultsScreen.send(this.sendStatistics());
     showScreen(this.screen.element);
   }
 

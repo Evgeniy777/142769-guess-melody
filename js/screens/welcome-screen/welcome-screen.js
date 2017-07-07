@@ -1,5 +1,4 @@
 import Welcome from './welcome-screen-view';
-import application from '../../application';
 import {showScreen} from '../../engine/show-screen';
 
 export default class WelcomeController {
@@ -9,13 +8,13 @@ export default class WelcomeController {
   }
 
   init() {
-    this.screen.onStartGame = application.showGame;
+    this.screen.onStartGame = WelcomeController.showGame;
 
-    application.showWelcome();
+    WelcomeController.showWelcome();
     showScreen(this.screen.element);
 
     this.screen.onStartGame = () => {
-      application.showGame();
+      WelcomeController.showGame();
     };
   }
 }

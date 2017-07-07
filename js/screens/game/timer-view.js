@@ -39,7 +39,7 @@ export default class Timer extends AbstractView {
     });
   }
 
-  redrawCircle(circle, radius, animation) {
+  static redrawCircle(circle, radius, animation) {
     const length = 2 * Math.PI * radius;
     const stepLength = length / animation.steps;
     const lengthToClear = stepLength * animation.step;
@@ -54,10 +54,10 @@ export default class Timer extends AbstractView {
   redrawTimer(timer, animation) {
     const total = animation.stepDuration * animation.steps;
     const passed = animation.stepDuration * animation.step;
-    const timeLeft = this.formatTime(total, passed);
+    const timeLeft = Timer.formatTime(total, passed);
 
-    timer.querySelector(`.timer-value-mins`).textContent = this.addLeadingZero(timeLeft.minutes);
-    timer.querySelector(`.timer-value-secs`).textContent = this.addLeadingZero(timeLeft.seconds);
+    timer.querySelector(`.timer-value-mins`).textContent = Timer.addLeadingZero(timeLeft.minutes);
+    timer.querySelector(`.timer-value-secs`).textContent = Timer.addLeadingZero(timeLeft.seconds);
 
     return timer;
   }
@@ -65,12 +65,12 @@ export default class Timer extends AbstractView {
   updateTime(animation) {
     const total = animation.stepDuration * animation.steps;
     const passed = animation.stepDuration * animation.step;
-    const timeLeft = this.formatTime(total, passed);
+    const timeLeft = Timer.formatTime(total, passed);
 
     this.time = (timeLeft.minutes * 60) + timeLeft.seconds;
   }
 
-  formatTime(total, passed) {
+  static formatTime(total, passed) {
     const minutesLeft = Math.floor((total - passed) / 60 / 1000);
     const secondsLeft = (total - passed - minutesLeft * 60 * 1000) / 1000;
 
@@ -80,7 +80,7 @@ export default class Timer extends AbstractView {
     };
   }
 
-  addLeadingZero(val) {
+  static addLeadingZero(val) {
     return val < 10 ? `0${val}` : val;
   }
 
@@ -92,7 +92,7 @@ export default class Timer extends AbstractView {
     return this._element;
   }
 
-  getTime() {
+  static getTime() {
     const minutes = parseInt(document.querySelector(`.timer-value-mins`).textContent, 10);
     const seconds = parseInt(document.querySelector(`.timer-value-secs`).textContent, 10);
 
@@ -103,7 +103,7 @@ export default class Timer extends AbstractView {
 
   }
 
-  resetTimer() {
+  static resetTimer() {
     document.querySelector(`.main-timer`).innerHTML = ``;
   }
 }

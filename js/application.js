@@ -44,15 +44,15 @@ class Application {
     };
   }
 
-  showWelcome() {
+  static showWelcome() {
     location.hash = ControllerID.WELCOME;
   }
 
-  showGame() {
+  static showGame() {
     location.hash = ControllerID.GAME;
   }
 
-  showResult(state, stats) {
+  static showResult(state, stats) {
     const stateObject = JSON.stringify({
       state, stats
     });
